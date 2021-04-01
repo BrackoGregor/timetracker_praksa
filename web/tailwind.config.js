@@ -14,6 +14,9 @@ module.exports = {
       red: '#D13A26',
       gray: '#8195A7'
     },
+    fontFamily: {
+      customFont: ['Barlow Condensed', 'sans-serif'],
+    },
     extend: {},
   },
   variants: {

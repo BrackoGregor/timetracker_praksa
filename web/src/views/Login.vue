@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text">This is login</h1>
+    <h1 class="font-customFont">This is login</h1>
   </div>
 </template>
 
