@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <p >Welcome to Your Register page</p>
   </div>
 </template>
 
+
 <script>
-// @ is an alias to /src
 
 export default {
   
