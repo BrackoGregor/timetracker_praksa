@@ -2,10 +2,10 @@
 
 
 ## Authors:
-- Gregor Bračko	
-- Samo Farič	
-- Patrick Kačič
-- Tomas Kovačič
+- Gregor Bračko	   (backend)
+- Samo Farič	     (backend)
+- Patrick Kačič    (frontend)
+- Tomas Kovačič    (frontend)
 
 ### Mentors:
 - David Šket
