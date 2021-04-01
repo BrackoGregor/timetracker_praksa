@@ -1,9 +1,11 @@
 <template>
   <div>
-    <p>Welcome to Your Register page</p>
+    <h1>This is login</h1>
   </div>
 </template>
 
 <script>
 export default {};
 </script>
+
+<style></style>
