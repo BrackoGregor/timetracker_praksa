@@ -10,14 +10,25 @@ module.exports = {
         light: '#03779E',
         DEFAULT: '#032A4E',
       },
+      white: '#fff',
       green: '#158800',
       red: '#D13A26',
-      gray: '#8195A7'
+      black: '#000',
+      gray: {
+        light: '#E3E3E3',
+        loginInputText: '#A2A2A2',
+        loginInputBg: '#E6E6E6',
+        DEFAULT: '8195A7',
+      },
     },
     fontFamily: {
       customFont: ['Barlow Condensed', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        login: '15px 15px 40px rgba(0, 0, 0, 0.25)',
+      }
+    },
   },
   variants: {
     extend: {},
