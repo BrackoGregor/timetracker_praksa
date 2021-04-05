@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\activities;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
-class ActivitiesController extends Controller
+class ActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ActivitiesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\activities  $activities
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function show(activities $activities)
+    public function show(Activity $activity)
     {
         //
     }
@@ -52,10 +52,10 @@ class ActivitiesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\activities  $activities
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function edit(activities $activities)
+    public function edit(Activity $activity)
     {
         //
     }
@@ -64,10 +64,10 @@ class ActivitiesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\activities  $activities
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, activities $activities)
+    public function update(Request $request, Activity $activity)
     {
         //
     }
@@ -75,10 +75,10 @@ class ActivitiesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\activities  $activities
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(activities $activities)
+    public function destroy(Activity $activity)
     {
         //
     }

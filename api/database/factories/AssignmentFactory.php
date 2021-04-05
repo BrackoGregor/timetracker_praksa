@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\activities;
+use App\Models\Assignment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ActivitiesFactory extends Factory
+class AssignmentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = activities::class;
+    protected $model = Assignment::class;
 
     /**
      * Define the model's default state.

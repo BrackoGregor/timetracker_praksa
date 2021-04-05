@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\users_assignments;
+use App\Models\User_Assignment;
 use Illuminate\Http\Request;
 
-class UsersAssignmentsController extends Controller
+class UserAssignmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UsersAssignmentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\users_assignments  $users_assignments
+     * @param  \App\Models\User_Assignment  $user_Assignment
      * @return \Illuminate\Http\Response
      */
-    public function show(users_assignments $users_assignments)
+    public function show(User_Assignment $user_Assignment)
     {
         //
     }
@@ -52,10 +52,10 @@ class UsersAssignmentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\users_assignments  $users_assignments
+     * @param  \App\Models\User_Assignment  $user_Assignment
      * @return \Illuminate\Http\Response
      */
-    public function edit(users_assignments $users_assignments)
+    public function edit(User_Assignment $user_Assignment)
     {
         //
     }
@@ -64,10 +64,10 @@ class UsersAssignmentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\users_assignments  $users_assignments
+     * @param  \App\Models\User_Assignment  $user_Assignment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, users_assignments $users_assignments)
+    public function update(Request $request, User_Assignment $user_Assignment)
     {
         //
     }
@@ -75,10 +75,10 @@ class UsersAssignmentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\users_assignments  $users_assignments
+     * @param  \App\Models\User_Assignment  $user_Assignment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(users_assignments $users_assignments)
+    public function destroy(User_Assignment $user_Assignment)
     {
         //
     }

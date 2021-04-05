@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\assignments;
+use App\Models\User_Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class AssignmentsFactory extends Factory
+class UserRoleFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = assignments::class;
+    protected $model = User_Role::class;
 
     /**
      * Define the model's default state.
