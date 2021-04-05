@@ -62,7 +62,7 @@
 
         <div class="flex flex-col">
           <button
-            class="mx-12 mt-16 mb-7 text-white font-customFont text-2xl font-medium bg-red rounded-full py-2"
+            class="mx-12 mt-16 mb-7 text-white font-customFont text-2xl font-medium bg-red rounded-full py-2 hover:bg-opacity-80"
           >
             Sign up
           </button>
