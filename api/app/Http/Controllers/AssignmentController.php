@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assignment;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -21,9 +22,9 @@ class AssignmentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return JsonResponse
      */
-    public function create()
+    public function create(): JsonResponse
     {
         // show view
     }
@@ -31,12 +32,12 @@ class AssignmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return JsonResponse
      */
     public function store(Request $request):JsonResponse
     {
-        response()->json(Assignment::create($request->all()));
+        return response()->json(Assignment::create($request->all()));
 
         //redirect
     }
@@ -66,7 +67,7 @@ class AssignmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param Assignment $assignment
      * @return JsonResponse
      */
@@ -82,7 +83,7 @@ class AssignmentController extends Controller
      *
      * @param Assignment $assignment
      * @return JsonResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function destroy(Assignment $assignment):JsonResponse
     {
