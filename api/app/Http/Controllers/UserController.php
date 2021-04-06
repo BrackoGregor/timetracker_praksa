@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
+use App\Models\User;
 use Exception;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
-class ClientController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +18,8 @@ class ClientController extends Controller
      */
     public function index(): JsonResponse
     {
-        return response()->json(Client::all());
+        return response()->json(User::all());
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -30,17 +30,18 @@ class ClientController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validated = Validator::make($request->all(), [
-            'name' => 'required|max:100',
-            'address' => 'required|max:100',
-            'postcode' => 'required|max:10',
-            'city' => 'required|max:50',
-            'country' => 'required|max:50'
+            'firstname' => 'required|max:50',
+            'lastname' => 'required|max:80',
+            'username' => 'required|unique:users|max:45',
+            'email' => 'required|email|unique:users|max:80',
+            'password' => 'required|min:6|max:150',
+            'id_users_roles' => 'required'
         ]);
 
         if ($validated->fails()) {
             return response()->json($validated->errors());
         } else {
-            $validated = Client::create($request->all());
+            $validated = User::create($request->all());
 
             return response()->json($validated, 201);
         }
@@ -50,38 +51,38 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Client $client
+     * @param User $user
      * @return JsonResponse
      */
-    public function show(Client $client): JsonResponse
+    public function show(User $user): JsonResponse
     {
-        return response()->json($client);
+        return response()->json($user);
     }
-
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Client $client
+     * @param User $user
      * @return JsonResponse
      */
-    public function update(Request $request, Client $client): JsonResponse
+    public function update(Request $request, User $user): JsonResponse
     {
         $validated = Validator::make($request->all(), [
-            'name' => 'required|max:100',
-            'address' => 'required|max:100',
-            'postcode' => 'required|max:10',
-            'city' => 'required|max:50',
-            'country' => 'required|max:50'
+            'firstname' => 'required|max:50',
+            'lastname' => 'required|max:80',
+            'username' => 'required|unique:users|max:45',
+            'email' => 'required|email|unique:users|max:80',
+            'password' => 'required|min:6|max:150',
+            'id_users_roles' => 'required'
         ]);
 
         if ($validated->fails()) {
             return response()->json($validated->errors());
         } else {
-            $client->update($request->all());
+            $user->update($request->all());
 
-            return response()->json($client, 200);
+            return response()->json($user, 200);
         }
 
     }
@@ -89,13 +90,13 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Client $client
+     * @param User $user
      * @return JsonResponse
      * @throws Exception
      */
-    public function destroy(Client $client): JsonResponse
+    public function destroy(User $user): JsonResponse
     {
-        $client->delete();
+        $user->delete();
 
         return response()->json(null, 204);
     }

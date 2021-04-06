@@ -3,83 +3,90 @@
 namespace App\Http\Controllers;
 
 use App\Models\User_Role;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json(User_Role::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        $validated = Validator::make($request->all(), [
+            'role' => 'required|max:50'
+        ]);
+
+        if ($validated->fails()) {
+            return response()->json($validated->errors());
+        } else {
+            $validated = User_Role::create($request->all());
+
+            return response()->json($validated, 201);
+        }
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User_Role  $user_Role
-     * @return \Illuminate\Http\Response
+     * @param User_Role $role
+     * @return JsonResponse
      */
-    public function show(User_Role $user_Role)
+    public function show(User_Role $role): JsonResponse
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User_Role  $user_Role
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User_Role $user_Role)
-    {
-        //
+        return response()->json($role);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User_Role  $user_Role
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param User_Role $role
+     * @return JsonResponse
      */
-    public function update(Request $request, User_Role $user_Role)
+    public function update(Request $request, User_Role $role): JsonResponse
     {
-        //
+        $validated = Validator::make($request->all(), [
+            'role' => 'required|max:50'
+        ]);
+
+        if ($validated->fails()) {
+            return response()->json($validated->errors());
+        } else {
+            $role->update($request->all());
+
+            return response()->json($role, 200);
+        }
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User_Role  $user_Role
-     * @return \Illuminate\Http\Response
+     * @param User_Role $role
+     * @return JsonResponse
+     * @throws Exception
      */
-    public function destroy(User_Role $user_Role)
+    public function destroy(User_Role $role): JsonResponse
     {
-        //
+        $role->delete();
+
+        return response()->json(null, 204);
     }
 }
