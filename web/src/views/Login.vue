@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row h-screen">
     <div class="flex items-center justify-center bg-gray-light w-full">
-      <form class="rounded-3xl bg-white shadow-login w-1/2">
+      <form class="rounded-3xl bg-white shadow-login w-2/3">
         <div class="text-center">
           <h1
             class="font-customFont text-8xl font-semibold mt-7 mb-14 ml-12 mr-12"
@@ -38,17 +38,18 @@
             >Forget password?</a
           >
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col text-center">
           <button
             class="mx-12 mt-16 mb-7 text-white font-customFont text-2xl font-medium bg-red rounded-full py-2"
           >
             Sign in
           </button>
-          <button
+          <router-link
             class="mx-12 mb-12 text-white font-customFont text-2xl font-medium bg-blue rounded-full py-2"
+            :to="{ name: 'Register' }"
+            tag="button"
+            >Create Account</router-link
           >
-            Create Account
-          </button>
         </div>
       </form>
     </div>
