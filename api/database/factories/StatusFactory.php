@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\status;
+use App\Models\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class StatusFactory extends Factory
@@ -12,7 +12,7 @@ class StatusFactory extends Factory
      *
      * @var string
      */
-    protected $model = status::class;
+    protected $model = Status::class;
 
     /**
      * Define the model's default state.
