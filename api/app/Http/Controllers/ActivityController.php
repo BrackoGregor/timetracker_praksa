@@ -20,16 +20,6 @@ class ActivityController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return JsonResponse
-     */
-    public function create():JsonResponse
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
@@ -37,9 +27,7 @@ class ActivityController extends Controller
      */
     public function store(Request $request):JsonResponse
     {
-        return response()->json(Activity::create($request->all()));
-
-        //redirect
+        return response()->json(Activity::create($request->all()), 201);
     }
 
     /**
@@ -54,17 +42,6 @@ class ActivityController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Activity $activity
-     * @return JsonResponse
-     */
-    public function edit(Activity $activity):JsonResponse
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param Request $request
@@ -74,8 +51,6 @@ class ActivityController extends Controller
     public function update(Request $request, Activity $activity):JsonResponse
     {
         return response()->json($activity->update($request->all()));
-
-        //redirect
     }
 
     /**
@@ -87,6 +62,6 @@ class ActivityController extends Controller
      */
     public function destroy(Activity $activity):JsonResponse
     {
-        return response()->json($activity->delete());
+        return response()->json($activity->delete(), 204);
     }
 }

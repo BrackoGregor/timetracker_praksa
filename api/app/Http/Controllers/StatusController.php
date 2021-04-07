@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Status;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
@@ -10,76 +12,56 @@ class StatusController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index():JsonResponse
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json(Status::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request):JsonResponse
     {
-        //
+        return response()->json(Status::create($request->all()), 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Status  $status
-     * @return \Illuminate\Http\Response
+     * @param Status $status
+     * @return JsonResponse
      */
-    public function show(Status $status)
+    public function show(Status $status):JsonResponse
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Status  $status
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Status $status)
-    {
-        //
+        return response()->json($status);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Status  $status
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Status $status
+     * @return JsonResponse
      */
-    public function update(Request $request, Status $status)
+    public function update(Request $request, Status $status):JsonResponse
     {
-        //
+        return response()->json($status->update($request->all()));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Status  $status
-     * @return \Illuminate\Http\Response
+     * @param Status $status
+     * @return JsonResponse
+     * @throws Exception
      */
-    public function destroy(Status $status)
+    public function destroy(Status $status):JsonResponse
     {
-        //
+        return response()->json($status->delete(), 204);
     }
 }

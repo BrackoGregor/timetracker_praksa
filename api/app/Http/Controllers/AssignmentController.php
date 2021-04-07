@@ -20,16 +20,6 @@ class AssignmentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return JsonResponse
-     */
-    public function create(): JsonResponse
-    {
-        // show view
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
@@ -37,9 +27,7 @@ class AssignmentController extends Controller
      */
     public function store(Request $request):JsonResponse
     {
-        return response()->json(Assignment::create($request->all()));
-
-        //redirect
+        return response()->json(Assignment::create($request->all()), 201);
     }
 
     /**
@@ -54,17 +42,6 @@ class AssignmentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Assignment $assignment
-     * @return JsonResponse
-     */
-    public function edit(Assignment $assignment):JsonResponse
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param Request $request
@@ -74,8 +51,6 @@ class AssignmentController extends Controller
     public function update(Request $request, Assignment $assignment):JsonResponse
     {
         return response()->json($assignment->update($request->all()));
-
-        //redirect
     }
 
     /**
@@ -87,6 +62,6 @@ class AssignmentController extends Controller
      */
     public function destroy(Assignment $assignment):JsonResponse
     {
-        return response()->json($assignment->delete());
+        return response()->json($assignment->delete(), 204);
     }
 }
