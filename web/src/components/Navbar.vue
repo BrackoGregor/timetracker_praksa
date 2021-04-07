@@ -1,6 +1,5 @@
 <template>
-  <div class="flex flex-row h-full">
-    <!-- Sidebar -->
+  <div class="flex flex-row h-screen">
     <nav class="bg-blue w-12 justify-between flex flex-col" v-show="arrow">
       <div class="mt-5 mb-10">
         <a href="#" v-on:click="arrow = !arrow">
@@ -12,16 +11,15 @@
         </a>
         <div class="mt-20">
           <ul>
-            <li class="mb-6">
-              <router-link
-                :to="{ name: 'Add' }"
-                v-on:click="
+            <li class="mb-6" v-on:click="
                   (isClicked = false),
                     (isClicked2 = true),
                     (isClicked3 = true),
                     (isClicked4 = true),
                     (isClicked5 = true)
-                "
+                ">
+              <router-link
+                :to="{ name: 'Add' }"
               >
                 <span>
                   <img
@@ -37,16 +35,16 @@
                 </span>
               </router-link>
             </li>
-            <li class="mb-6">
-              <router-link
-                :to="{ name: 'Projects' }"
-                v-on:click="
+            <li class="mb-6" v-on:click="
                   (isClicked = true),
                     (isClicked2 = false),
                     (isClicked3 = true),
                     (isClicked4 = true),
                     (isClicked5 = true)
-                "
+                ">
+              <router-link
+                :to="{ name: 'Projects' }"
+                
               >
                 <span>
                   <img
@@ -62,16 +60,16 @@
                 </span>
               </router-link>
             </li>
-            <li class="mb-6">
-              <router-link
-                :to="{ name: 'Clients' }"
-                v-on:click="
+            <li class="mb-6" v-on:click="
                   (isClicked = true),
                     (isClicked2 = true),
                     (isClicked3 = false),
                     (isClicked4 = true),
                     (isClicked5 = true)
-                "
+                ">
+              <router-link
+                :to="{ name: 'Clients' }"
+                
               >
                 <span>
                   <img
@@ -87,16 +85,16 @@
                 </span>
               </router-link>
             </li>
-            <li>
-              <router-link
-                :to="{ name: 'Calendar' }"
-                v-on:click="
+            <li v-on:click="
                   (isClicked = true),
                     (isClicked2 = true),
                     (isClicked3 = true),
                     (isClicked4 = false),
                     (isClicked5 = true)
-                "
+                ">
+              <router-link
+                :to="{ name: 'Calendar' }"
+                
               >
                 <span>
                   <img
@@ -115,16 +113,16 @@
           </ul>
         </div>
       </div>
-      <div class="mb-5">
-        <router-link
-          :to="{ name: 'Settings' }"
-          v-on:click="
+      <div class="mb-5" v-on:click="
             (isClicked = true),
               (isClicked2 = true),
               (isClicked3 = true),
               (isClicked4 = true),
               (isClicked5 = false)
-          "
+          ">
+        <router-link
+          :to="{ name: 'Settings' }"
+          
         >
           <span>
             <img
@@ -165,16 +163,16 @@
                 </span>
               </div>
             </li>
-            <li class="mb-2">
-              <router-link
-                :to="{ name: 'Add' }"
-                v-on:click="
+            <li class="mb-2" v-on:click="
                   (isClicked = false),
                     (isClicked2 = true),
                     (isClicked3 = true),
                     (isClicked4 = true),
                     (isClicked5 = true)
-                "
+                ">
+              <router-link
+                :to="{ name: 'Add' }"
+                
               >
                 <span class="flex">
                   <img
@@ -195,16 +193,16 @@
                 </span>
               </router-link>
             </li>
-            <li class="mb-2">
-              <router-link
-                :to="{ name: 'Projects' }"
-                v-on:click="
+            <li class="mb-2"  v-on:click="
                   (isClicked = true),
                     (isClicked2 = false),
                     (isClicked3 = true),
                     (isClicked4 = true),
                     (isClicked5 = true)
-                "
+                ">
+              <router-link
+                :to="{ name: 'Projects' }"
+               
               >
                 <span class="flex">
                   <img
@@ -224,16 +222,16 @@
                 </span>
               </router-link>
             </li>
-            <li class="mb-2">
-              <router-link
-                :to="{ name: 'Clients' }"
-                v-on:click="
+            <li class="mb-2" v-on:click="
                   (isClicked = true),
                     (isClicked2 = true),
                     (isClicked3 = false),
                     (isClicked4 = true),
                     (isClicked5 = true)
-                "
+                ">
+              <router-link
+                :to="{ name: 'Clients' }"
+                
               >
                 <span class="flex">
                   <img
@@ -253,16 +251,16 @@
                 </span>
               </router-link>
             </li>
-            <li>
-              <router-link
-                :to="{ name: 'Calendar' }"
-                v-on:click="
+            <li v-on:click="
                   (isClicked = true),
                     (isClicked2 = true),
                     (isClicked3 = true),
                     (isClicked4 = false),
                     (isClicked5 = true)
-                "
+                ">
+              <router-link
+                :to="{ name: 'Calendar' }"
+                
               >
                 <span class="flex">
                   <img
@@ -285,16 +283,16 @@
           </ul>
         </div>
       </div>
-      <div class="mb-5 mr-40">
-        <router-link
-          :to="{ name: 'Settings' }"
-          v-on:click="
+      <div class="mb-5 mr-40" v-on:click="
             (isClicked = true),
               (isClicked2 = true),
               (isClicked3 = true),
               (isClicked4 = true),
               (isClicked5 = false)
-          "
+          ">
+        <router-link
+          :to="{ name: 'Settings' }"
+          
         >
           <span class="flex">
             <img
@@ -313,7 +311,7 @@
         </router-link>
       </div>
     </nav>
-    <div class="px-16 py-4 text-gray-700 bg-gray-200 h-screen w-screen"></div>
+    
   </div>
 </template>
 
