@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Status;
+use App\Models\User_Assignment;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class StatusController extends Controller
+class UserAssignmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class StatusController extends Controller
      */
     public function index():JsonResponse
     {
-        return response()->json(Status::all());
+        return response()->json(User_Assignment::all());
     }
 
     /**
@@ -28,48 +28,50 @@ class StatusController extends Controller
     public function store(Request $request):JsonResponse
     {
         $validated = $request->validate([
-            'name' => 'required|max:20'
+            'id_users' => 'required',
+            'id_assignments' => 'required'
         ]);
 
-        return response()->json(Status::create($validated), 201);
+        return response()->json(User_Assignment::create($validated), 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Status $status
+     * @param User_Assignment $user_Assignment
      * @return JsonResponse
      */
-    public function show(Status $status):JsonResponse
+    public function show(User_Assignment $user_Assignment):JsonResponse
     {
-        return response()->json($status);
+        return response()->json($user_Assignment);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Status $status
+     * @param User_Assignment $user_Assignment
      * @return JsonResponse
      */
-    public function update(Request $request, Status $status):JsonResponse
+    public function update(Request $request, User_Assignment $user_Assignment):JsonResponse
     {
         $validated = $request->validate([
-            'name' => 'required|max:20'
+            'id_users' => 'required',
+            'id_assignments' => 'required'
         ]);
 
-        return response()->json($status->update($validated));
+        return response()->json($user_Assignment->update($validated));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Status $status
+     * @param User_Assignment $user_Assignment
      * @return JsonResponse
      * @throws Exception
      */
-    public function destroy(Status $status):JsonResponse
+    public function destroy(User_Assignment $user_Assignment):JsonResponse
     {
-        return response()->json($status->delete(), 204);
+        return response()->json($user_Assignment->delete(), 204);
     }
 }
