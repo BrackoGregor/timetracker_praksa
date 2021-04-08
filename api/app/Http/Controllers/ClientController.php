@@ -29,11 +29,11 @@ class ClientController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'name' => 'required|max:100',
-            'address' => 'required|max:100',
-            'postcode' => 'required|max:10',
-            'city' => 'required|max:50',
-            'country' => 'required|max:50'
+            'name' => 'required|string|max:100',
+            'address' => 'required|string|max:100',
+            'postcode' => 'required|string|max:10',
+            'city' => 'required|string|max:50',
+            'country' => 'required|string|max:50'
         ]);
 
         $client = Client::create($validated);
@@ -64,11 +64,11 @@ class ClientController extends Controller
     public function update(Request $request, Client $client): JsonResponse
     {
         $validated = $request->validate([
-            'name' => 'required|max:100',
-            'address' => 'required|max:100',
-            'postcode' => 'required|max:10',
-            'city' => 'required|max:50',
-            'country' => 'required|max:50'
+            'name' => 'required|string|max:100',
+            'address' => 'required|string|max:100',
+            'postcode' => 'required|string|max:10',
+            'city' => 'required|string|max:50',
+            'country' => 'required|string|max:50'
         ]);
 
         $client->update($validated);

@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class users_roles extends Model
+class Activity extends Model
 {
+    protected array $guarded = [];
     use HasFactory;
 }

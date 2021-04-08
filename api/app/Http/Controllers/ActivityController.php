@@ -28,11 +28,11 @@ class ActivityController extends Controller
     public function store(Request $request):JsonResponse
     {
         $validated = $request->validate([
-            'title' => 'required|max:50',
-            'start_time' => 'required',
-            'end_time' => 'required',
-            'comment' => 'required',
-            'id_assignments' => 'required'
+            'title' => 'required|string|max:50',
+            'start_time' => 'required|date',
+            'end_time' => 'required|date',
+            'comment' => 'required|string',
+            'id_assignments' => 'required|integer'
         ]);
 
         return response()->json(Activity::create($validated), 201);
@@ -59,11 +59,11 @@ class ActivityController extends Controller
     public function update(Request $request, Activity $activity):JsonResponse
     {
         $validated = $request->validate([
-            'title' => 'required|max:50',
-            'start_time' => 'required',
-            'end_time' => 'required',
-            'comment' => 'required',
-            'id_assignments' => 'required'
+            'title' => 'required|string|max:50',
+            'start_time' => 'required|date',
+            'end_time' => 'required|date',
+            'comment' => 'required|string',
+            'id_assignments' => 'required|integer'
         ]);
 
         return response()->json($activity->update($validated));

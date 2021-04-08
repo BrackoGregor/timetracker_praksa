@@ -30,11 +30,11 @@ class ContactController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'firstname' => 'required|max:50',
-            'lastname' => 'required|max:80',
-            'email' => 'required|email|max:80',
-            'phone' => 'required|max:30',
-            'id_client' => 'required'
+            'firstname' => 'required|string|max:50',
+            'lastname' => 'required|string|max:80',
+            'email' => 'required|string|email|max:80',
+            'phone' => 'required|string|max:30',
+            'id_client' => 'required|integer'
         ]);
 
         $contact = Contact::create($validated);
@@ -64,11 +64,11 @@ class ContactController extends Controller
     public function update(Request $request, Contact $contact): JsonResponse
     {
         $validated = $request->validate([
-            'firstname' => 'required|max:50',
-            'lastname' => 'required|max:80',
-            'email' => 'required|email|max:80',
-            'phone' => 'required|max:30',
-            'id_client' => 'required'
+            'firstname' => 'required|string|max:50',
+            'lastname' => 'required|string|max:80',
+            'email' => 'required|string|email|max:80',
+            'phone' => 'required|string|max:30',
+            'id_client' => 'required|integer'
         ]);
 
         $contact->update($validated);
