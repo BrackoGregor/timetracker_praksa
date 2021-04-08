@@ -15,11 +15,12 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('address', 100);
-            $table->string('postcode', 10);
-            $table->string('city', 50);
-            $table->string('country', 50);
+            $table->string('firstname', 50);
+            $table->string('lastname', 80);
+            $table->string('email', 80);
+            $table->integer('phone');
+            $table->bigInteger('id_client')->unsigned();
+            $table->foreign('id_client')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
