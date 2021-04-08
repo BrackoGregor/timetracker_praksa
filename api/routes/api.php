@@ -33,6 +33,7 @@ Route::group(['prefix' => 'v1'], function() {
         'roles' => UserRoleController::class,
         'activities' => ActivityController::class,
         'assignments' => AssignmentController::class,
-        'statuses' => StatusController::class
+        'statuses' => StatusController::class,
+        'userAssignments' => UserAssignmentController::class
     ]);
 });
