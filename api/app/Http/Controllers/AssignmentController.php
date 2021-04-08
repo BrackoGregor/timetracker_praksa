@@ -28,10 +28,10 @@ class AssignmentController extends Controller
     public function store(Request $request):JsonResponse
     {
         $validated = $request->validate([
-            'work_description' => 'required|max:200',
-            'developer_description' => 'required|max:200',
-            'id_clients' => 'required',
-            'id_statuses' => 'required'
+            'work_description' => 'required|string|max:200',
+            'developer_description' => 'required|string|max:200',
+            'id_clients' => 'required|integer',
+            'id_statuses' => 'required|integer'
         ]);
 
         return response()->json(Assignment::create($validated), 201);
@@ -58,10 +58,10 @@ class AssignmentController extends Controller
     public function update(Request $request, Assignment $assignment):JsonResponse
     {
         $validated = $request->validate([
-            'work_description' => 'required|max:200',
-            'developer_description' => 'required|max:200',
-            'id_clients' => 'required',
-            'id_statuses' => 'required'
+            'work_description' => 'required|string|max:200',
+            'developer_description' => 'required|string|max:200',
+            'id_clients' => 'required|integer',
+            'id_statuses' => 'required|integer'
         ]);
 
         return response()->json($assignment->update($validated));

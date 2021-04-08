@@ -28,8 +28,8 @@ class UserAssignmentController extends Controller
     public function store(Request $request):JsonResponse
     {
         $validated = $request->validate([
-            'id_users' => 'required',
-            'id_assignments' => 'required'
+            'id_users' => 'required|integer',
+            'id_assignments' => 'required|integer'
         ]);
 
         return response()->json(User_Assignment::create($validated), 201);
@@ -38,40 +38,40 @@ class UserAssignmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param User_Assignment $user_Assignment
+     * @param User_Assignment $userAssignment
      * @return JsonResponse
      */
-    public function show(User_Assignment $user_Assignment):JsonResponse
+    public function show(User_Assignment $userAssignment):JsonResponse
     {
-        return response()->json($user_Assignment);
+        return response()->json($userAssignment);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param User_Assignment $user_Assignment
+     * @param User_Assignment $userAssignment
      * @return JsonResponse
      */
-    public function update(Request $request, User_Assignment $user_Assignment):JsonResponse
+    public function update(Request $request, User_Assignment $userAssignment):JsonResponse
     {
         $validated = $request->validate([
-            'id_users' => 'required',
-            'id_assignments' => 'required'
+            'id_users' => 'required|integer',
+            'id_assignments' => 'required|integer'
         ]);
 
-        return response()->json($user_Assignment->update($validated));
+        return response()->json($userAssignment->update($validated));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param User_Assignment $user_Assignment
+     * @param User_Assignment $userAssignment
      * @return JsonResponse
      * @throws Exception
      */
-    public function destroy(User_Assignment $user_Assignment):JsonResponse
+    public function destroy(User_Assignment $userAssignment):JsonResponse
     {
-        return response()->json($user_Assignment->delete(), 204);
+        return response()->json($userAssignment->delete(), 204);
     }
 }

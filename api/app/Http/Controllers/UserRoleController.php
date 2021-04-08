@@ -29,7 +29,7 @@ class UserRoleController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'role' => 'required|max:50'
+            'role' => 'required|string|max:50'
         ]);
 
         $role = User_Role::create($validated);
@@ -59,7 +59,7 @@ class UserRoleController extends Controller
     public function update(Request $request, User_Role $role): JsonResponse
     {
         $validated = $request->validate([
-            'role' => 'required|max:50'
+            'role' => 'required|string|max:50'
         ]);
 
         $role->update($validated);

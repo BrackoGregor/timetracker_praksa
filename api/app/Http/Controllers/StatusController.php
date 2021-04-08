@@ -28,7 +28,7 @@ class StatusController extends Controller
     public function store(Request $request):JsonResponse
     {
         $validated = $request->validate([
-            'name' => 'required|max:20'
+            'name' => 'required|string|max:20'
         ]);
 
         return response()->json(Status::create($validated), 201);
@@ -55,7 +55,7 @@ class StatusController extends Controller
     public function update(Request $request, Status $status):JsonResponse
     {
         $validated = $request->validate([
-            'name' => 'required|max:20'
+            'name' => 'required|string|max:20'
         ]);
 
         return response()->json($status->update($validated));

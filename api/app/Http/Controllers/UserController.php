@@ -30,12 +30,12 @@ class UserController extends Controller
     public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'firstname' => 'required|max:50',
-            'lastname' => 'required|max:80',
-            'username' => 'required|unique:users|max:45',
-            'email' => 'required|email|unique:users|max:80',
-            'password' => 'required|min:6|max:150',
-            'id_users_roles' => 'required'
+            'firstname' => 'required|string|max:50',
+            'lastname' => 'required|string|max:80',
+            'username' => 'required|string|unique:users|max:45',
+            'email' => 'required|string|email|unique:users|max:80',
+            'password' => 'required|string|min:6|max:150',
+            'id_users_roles' => 'required|integer'
         ]);
 
         $user = User::create($validated);
@@ -65,12 +65,12 @@ class UserController extends Controller
     public function update(Request $request, User $user): JsonResponse
     {
         $validated = $request->validate([
-            'firstname' => 'required|max:50',
-            'lastname' => 'required|max:80',
-            'username' => 'required|unique:users|max:45',
-            'email' => 'required|email|unique:users|max:80',
-            'password' => 'required|min:6',
-            'id_users_roles' => 'required'
+            'firstname' => 'required|string|max:50',
+            'lastname' => 'required|string|max:80',
+            'username' => 'required|string|unique:users|max:45',
+            'email' => 'required|string|email|unique:users|max:80',
+            'password' => 'required|string|min:6|max:150',
+            'id_users_roles' => 'required|integer'
         ]);
 
         $user->update($validated);
