@@ -8,11 +8,13 @@
 <script>
 import ClientTable from "../components/ClientTable";
 import HeaderTable from "../components/HeaderTable";
+import ExtendedNavbar from "../components/ExtendedNavbar"
 
 export default {
   components: {
     ClientTable,
     HeaderTable,
+    ExtendedNavbar,
   },
 };
 </script>
