@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex">
-    <div class="w-11">SIDE</div>
+    <ExtendedNavbar></ExtendedNavbar>
     <div class="flex flex-col w-full">
       <HeaderTable></HeaderTable>
       <div class="flex flex-row">
