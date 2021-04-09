@@ -1,15 +1,21 @@
 <template>
-  <div>
-    <h1>Clients</h1>
+  <div class="flex flex-col w-full">
+    <HeaderTable></HeaderTable>
+    <ClientTable></ClientTable>
   </div>
 </template>
 
 <script>
-export default {
+import ClientTable from "../components/ClientTable";
+import HeaderTable from "../components/HeaderTable";
 
-}
+export default {
+  components: {
+    ClientTable,
+    HeaderTable,
+  },
+};
 </script>
 
 <style>
-
 </style>
