@@ -1,7 +1,10 @@
 <template>
   <div class="flex flex-row h-screen">
     <div class="flex items-center justify-center bg-gray-light w-full">
-      <form class="rounded-3xl bg-white shadow-login w-2/3">
+      <form
+        @submit.prevent="submit"
+        class="rounded-3xl bg-white shadow-login w-2/3"
+      >
         <div class="text-center">
           <h1
             class="font-customFont text-8xl font-semibold mt-7 mb-14 ml-12 mr-12"
@@ -11,6 +14,7 @@
         </div>
         <div class="flex flex-col">
           <input
+            v-model="form.email"
             name="email"
             type="email"
             autocomplete="email"
@@ -19,6 +23,7 @@
             placeholder="Email Address"
           />
           <input
+            v-model="form.password"
             name="password"
             type="password"
             autocomplete="password"
@@ -40,6 +45,7 @@
         </div>
         <div class="flex flex-col text-center">
           <button
+            type="submit"
             class="mx-12 mt-16 mb-7 text-white font-customFont text-2xl font-medium bg-red rounded-full py-2"
           >
             Sign in
@@ -68,7 +74,27 @@
 </template>
 
 <script>
-export default {};
+import { mapActions } from "vuex";
+
+export default {
+  data() {
+    return {
+      form: {
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    ...mapActions({
+      login: "auth/login",
+    }),
+
+    submit() {
+      this.login(this.form);
+    },
+  },
+};
 </script>
 
 <style>
