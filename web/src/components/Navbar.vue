@@ -1,22 +1,22 @@
 <template>
-  <div class="flex flex-row h-screen">
+  <div class="flex flex-row h-screen shadow-sideBar">
     <nav class="bg-blue w-12 justify-between flex flex-col" v-show="arrow">
       <div class="mt-5 mb-10">
         <a href="#" v-on:click="arrow = !arrow">
           <img
             src="../assets/right.svg"
-            class="rounded-full w-5 h-5 mb-3 mx-auto"
+            class="rounded-full w-5 h-5 mb-3 mx-auto hover:opacity-100"
             v-show="arrow"
           />
         </a>
         <div class="mt-20">
           <ul>
-            <li class="mb-6" v-for="link in links" :key="link.id" >
-              <router-link :to="{ name: link.route }" >
+            <li class="mb-6" v-for="link in links" :key="link.id">
+              <router-link :to="{ name: link.route }">
                 <span>
                   <img
                     :src="link.img1"
-                    class="rounded-full w-5 h-5 mb-3 mx-auto"
+                    class="rounded-full w-5 h-5 mb-3 mx-auto hover:opacity-100 opacity-50"
                   />
                 </span>
               </router-link>
@@ -33,7 +33,7 @@
         <a href="#" v-on:click="arrow = !arrow">
           <img
             src="../assets/left.svg"
-            class="rounded-full w-5 h-5 ml-4"
+            class="rounded-full w-5 h-5 ml-4 hover:opacity-100"
             v-show="!arrow"
           />
         </a>
@@ -55,8 +55,8 @@
               </div>
             </li>
             <li class="mb-2" v-for="link in links" :key="link.id">
-              <router-link :to="{ name: link.route }" class="router-link-exact-active">
-                <span class="flex">
+              <router-link :to="{ name: link.route }">
+                <span class="flex hover:opacity-100 opacity-50">
                   <img
                     :src="link.img1"
                     class="rounded-full w-5 h-5 mb-3 mr-2 ml-7 mt-1"
@@ -122,4 +122,14 @@ export default {
 </script>
 
 <style>
+
+a.router-link-exact-active>span {
+    @apply opacity-100;
+}
+
+a.router-link-exact-active>span>img {
+    @apply opacity-100;
+}
+
+
 </style>
