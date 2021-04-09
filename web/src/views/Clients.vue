@@ -1,18 +1,29 @@
 <template>
-  <div class="flex flex-col w-full">
-    <HeaderTable></HeaderTable>
-    <ClientTable></ClientTable>
+  <div class="w-full flex">
+    <div class="w-11">SIDE</div>
+    <div class="flex flex-col w-full">
+      <HeaderTable></HeaderTable>
+      <div class="flex flex-row">
+        <SearchField></SearchField>
+        <Filter></Filter>
+      </div>
+      <ClientTable></ClientTable>
+    </div>
   </div>
 </template>
 
 <script>
 import ClientTable from "../components/ClientTable";
 import HeaderTable from "../components/HeaderTable";
+import SearchField from "../components/SearchField";
+import Filter from "../components/Filter";
 
 export default {
   components: {
     ClientTable,
     HeaderTable,
+    SearchField,
+    Filter,
   },
 };
 </script>
