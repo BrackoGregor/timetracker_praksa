@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex">
+  <div class="w-full flex bg-gray-light">
     <ExtendedNavbar></ExtendedNavbar>
     <div class="flex flex-col w-full">
       <HeaderTable></HeaderTable>
