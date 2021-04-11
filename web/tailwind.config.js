@@ -16,6 +16,7 @@ module.exports = {
       black: '#000',
       gray: {
         light: '#E3E3E3',
+        inputPlaceholder: '#7E7E7E',
         loginInputText: '#A2A2A2',
         loginInputBg: '#E6E6E6',
         DEFAULT: '8195A7',
