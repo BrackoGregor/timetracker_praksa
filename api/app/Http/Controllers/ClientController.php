@@ -12,11 +12,14 @@ class ClientController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param $request
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        return response()->json(Client::all());
+        //return response()->json(Client::all());
+        //return response()->json(Client::paginate());
+        return response()->json(Client::paginate($request->get('per_page', 15)));
     }
 
 

@@ -12,11 +12,12 @@ class UserAssignmentController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function index():JsonResponse
+    public function index(Request $request):JsonResponse
     {
-        return response()->json(User_Assignment::all());
+        return response()->json(User_Assignment::paginate($request->get('per_page', 15)));
     }
 
     /**

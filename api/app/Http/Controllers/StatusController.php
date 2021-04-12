@@ -12,11 +12,12 @@ class StatusController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function index():JsonResponse
+    public function index(Request $request):JsonResponse
     {
-        return response()->json(Status::all());
+        return response()->json(Status::paginate($request->get('per_page', 15)));
     }
 
     /**

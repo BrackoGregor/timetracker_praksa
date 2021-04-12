@@ -6,18 +6,18 @@ use App\Models\User_Role;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class UserRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        return response()->json(User_Role::all());
+        return response()->json(User_Role::paginate($request->get('per_page', 15)));
     }
 
     /**
