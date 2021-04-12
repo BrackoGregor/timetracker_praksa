@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row h-screen shadow-sideBar">
-    <div class="w-full h-full bg-blue-light overflow-y-scroll">
+    <div class="w-full max-h-full bg-blue-light overflow-y-scroll">
       <nav
         class="bg-blue-light w-60 justify-between items-center flex flex-col"
       >
@@ -21,9 +21,11 @@
         v-for="con in content"
         :key="con.name"
       >
-        <h1 class="text-white opacity-70 font-customFont text-xl">
-          {{ con.name }}
-        </h1>
+        <router-link :to="{ name: con.route }">
+          <h1 class="text-white opacity-70 font-customFont text-xl">
+            {{ con.name }}
+          </h1>
+        </router-link>
       </div>
     </div>
   </div>
@@ -34,33 +36,31 @@ export default {
   data() {
     return {
       content: [
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-        { name: "Solve-x d.o.o." },
-
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
+        { name: "Solve-x d.o.o.", route: "Clients" },
       ],
     };
   },
@@ -71,5 +71,31 @@ export default {
 input::placeholder {
   @apply text-white;
   @apply opacity-50;
+}
+
+a.router-link-exact-active > h1 {
+  @apply opacity-100;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #256074;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #032a4e;
+  border-radius: 15px;
+  height: 40px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 </style>
