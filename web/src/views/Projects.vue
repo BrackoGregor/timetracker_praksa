@@ -1,13 +1,33 @@
 <template>
-  <div>
-      Projects
+  <div class="w-full flex bg-gray-light">
+    <ExtendedNavbar></ExtendedNavbar>
+    <div class="flex flex-col w-full">
+      <HeaderTable></HeaderTable>
+      <div class="flex flex-row">
+        <SearchField></SearchField>
+        <Filter></Filter>
+      </div>
+      <ClientTable></ClientTable>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import ClientTable from "../components/ClientTable";
+import HeaderTable from "../components/HeaderTable";
+import SearchField from "../components/SearchField";
+import Filter from "../components/Filter";
+import ExtendedNavbar from "../components/ExtendedNavbar";
 
-}
+export default {
+  components: {
+    ClientTable,
+    HeaderTable,
+    SearchField,
+    Filter,
+    ExtendedNavbar,
+  },
+};
 </script>
 
 <style>

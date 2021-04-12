@@ -10,7 +10,7 @@
             <input
               type="text"
               class="placeholder-opacity-25 w-36 bg-blue-light text-center text-white font-customFont text-xl"
-              placeholder="search for clients"
+              :placeholder=" 'Search for '+[[ currentRouteName ]]"
             />
           </div>
           <hr class="w-44 object-center text-white opacity-50 mt-1" />
@@ -64,6 +64,11 @@ export default {
       ],
     };
   },
+  computed: {
+    currentRouteName() {
+        return this.$route.name.toLowerCase().trim();
+    }
+}
 };
 </script>
 
@@ -91,11 +96,11 @@ a.router-link-exact-active > h1 {
 ::-webkit-scrollbar-thumb {
   background: #032a4e;
   border-radius: 15px;
-  height: 40px;
+  height: 40;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #032444;
 }
 </style>
