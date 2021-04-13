@@ -5,13 +5,18 @@ namespace Tests\Feature;
 use App\Models\Assignment;
 use App\Models\Client;
 use App\Models\Status;
+use App\Models\User;
 use Illuminate\Testing\Fluent\AssertableJson;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class AssignmentTest extends TestCase
 {
     public function test_assignment_can_create()
     {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
         $createdClient = Client::factory()->create();
         $createdStatus = Status::factory()->create();
         $createdAssignment = Assignment::factory()->create(
@@ -25,6 +30,9 @@ class AssignmentTest extends TestCase
 
     public function test_assignment_can_delete()
     {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
         $createdClient = Client::factory()->create();
         $createdStatus = Status::factory()->create();
         $createdAssignment = Assignment::factory()->create(
@@ -37,6 +45,9 @@ class AssignmentTest extends TestCase
 
     public function test_assignment_can_update()
     {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
         $createdClient = Client::factory()->create();
         $createdStatus = Status::factory()->create();
         $createdAssignmentInDb = Assignment::factory()->create(
@@ -56,6 +67,9 @@ class AssignmentTest extends TestCase
 
     public function test_assignment_can_get()
     {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
         $createdClient = Client::factory()->create();
         $createdStatus = Status::factory()->create();
         $createdAssignment = Assignment::factory()->create(
@@ -69,18 +83,27 @@ class AssignmentTest extends TestCase
 
     public function test_assignment_can_get_all()
     {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
         $response = $this->get('/api/v1/assignments');
         $response->assertStatus(200);
     }
 
     public function test_assignment_can_not_show_assignment_with_invalid_id()
     {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
         $response = $this->get('/api/v1/assignments/'. 0);
         $response->assertStatus(404);
     }
 
     public function test_assignment_can_not_update_assignment_with_invalid_id()
     {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
         $createdClient = Client::factory()->create();
         $createdStatus = Status::factory()->create();
         $createdAssignment = Assignment::factory()->create(
@@ -91,8 +114,11 @@ class AssignmentTest extends TestCase
         $response->assertStatus(404);
     }
 
-    public function test_client_can_not_delete_assignment_with_invalid_id()
+    public function test_assignments_can_not_delete_assignment_with_invalid_id()
     {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
         $response = $this->delete('/api/v1/assignments/'. 0);
         $response->assertStatus(404);
     }
