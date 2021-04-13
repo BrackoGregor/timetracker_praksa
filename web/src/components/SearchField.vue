@@ -15,9 +15,9 @@
       />
     </svg>
     <input
-      class="pl-3 pr-3 py-2 rounded-md font-customFont font-normal text-2xl text-gray-inputPlaceholder focus-within:outline-none focus-within:text-black"
+      class="pl-3 pr-3 py-2 rounded-md font-customFont font-normal text-2xl placeholder-gray-inputPlaceholder text-gray-inputPlaceholder focus-within:outline-none focus-within:text-black"
       type="text"
-      placeholder="Search in Task"
+      placeholder="Searh in Tasks"
     />
   </div>
 </template>
