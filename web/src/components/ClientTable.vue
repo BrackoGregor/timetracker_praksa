@@ -1,53 +1,47 @@
 <template>
-  <div class="flex flex-col">
-    <div class="bg-blue-light mx-3 my-3 rounded-md">
-      <table class="w-full">
+  <div class="flex flex-col items-center">
+    <div>
+      <table>
         <thead>
           <tr>
-            <th>Project</th>
-            <th>Note</th>
-            <th>Start time</th>
-            <th>End time</th>
-            <th>Status</th>
+            <th>TEST</th>
+            <th>Test</th>
           </tr>
         </thead>
-        <tbody>
-          <tr class="text-center">
-            <td>Sole.x</td>
-            <td>TEST</td>
-            <td>11:00</td>
-            <td>12:00</td>
-            <td>active</td>
-          </tr>
-          <tr class="text-center">
-            <td>Sole.x</td>
-            <td>TEST</td>
-            <td>11:00</td>
-            <td>12:00</td>
-            <td>active</td>
-          </tr>
-          <tr class="text-center">
-            <td>Sole.x</td>
-            <td>TEST</td>
-            <td>11:00</td>
-            <td>12:00</td>
-            <td>active</td>
-          </tr>
-        </tbody>
       </table>
-      <div>
-        <ul class="flex flex-row justify-center">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
-      </div>
+    </div>
+    <div>
+      <Pagination
+        :total-pages="totalPages"
+        :total="totalData"
+        :per-page="perPage"
+        :current-page="currentPage"
+        @pagechanged="onPageChange"
+      ></Pagination>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import Pagination from "../components/Pagination";
+
+export default {
+  data() {
+    return {
+      currentPage: 1,
+      totalPages: 11,
+      perPage: 10,
+      totalData: 110,
+    };
+  },
+  methods: {
+    onPageChange(page) {
+      console.log(page);
+      this.currentPage = page;
+    },
+  },
+  components: { Pagination },
+};
 </script>
 
 <style>
