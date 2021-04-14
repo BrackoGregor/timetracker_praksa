@@ -82,8 +82,9 @@ class ContactTest extends TestCase
         $user = User::factory()->create();
         Passport::actingAs($user);
 
-        $response = $this->get('/api/v1/contacts');
+        $response = $this->get('/api/v1/contacts?page=1&per_page=3');
         $response->assertStatus(200);
+        $this->assertNotEmpty($response->json('data'));
     }
 
     public function test_contact_can_not_show_contact_with_invalid_id()

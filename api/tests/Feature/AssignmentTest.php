@@ -86,8 +86,9 @@ class AssignmentTest extends TestCase
         $user = User::factory()->create();
         Passport::actingAs($user);
 
-        $response = $this->get('/api/v1/assignments');
+        $response = $this->get('/api/v1/assignments?page=1&per_page=3');
         $response->assertStatus(200);
+        $this->assertNotEmpty($response->json('data'));
     }
 
     public function test_assignment_can_not_show_assignment_with_invalid_id()
