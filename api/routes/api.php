@@ -5,6 +5,7 @@ use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\UserAssignmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserRoleController;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'v1'], function() {
+Route::group(['prefix' => 'v1', 'middleware' => ['auth:api']], function() {
     Route::apiResources([
         'clients' => ClientController::class,
         'users' => UserController::class,
@@ -37,3 +38,4 @@ Route::group(['prefix' => 'v1'], function() {
         'userAssignments' => UserAssignmentController::class
     ]);
 });
+
