@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Assignment;
 use App\Models\User;
-use Illuminate\Testing\Fluent\AssertableJson;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 use App\Models\Activity;
