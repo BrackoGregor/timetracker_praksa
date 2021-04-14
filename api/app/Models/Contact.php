@@ -20,9 +20,9 @@ class Contact extends Model
         'id_client'
     ];
 
-    public function assignment(): HasMany
+    public function client(): HasMany
     {
-        return $this->hasMany(Assignment::class, 'id_client', 'id');
+        return $this->hasMany(Client::class, 'id_client', 'id');
     }
 
     use HasFactory;
