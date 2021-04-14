@@ -1,8 +1,8 @@
 <template>
-  <div class="rounded-md flex flex-row bg-white h-12 ml-3 items-center">
+  <div class="rounded-md flex flex-row bg-white h-10 ml-3 items-center">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="h-6 w-6 ml-3 cursor-pointer"
+      class="h-5 w-5 ml-3 cursor-pointer"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -15,12 +15,12 @@
       />
     </svg>
     <h1
-      class="font-customFont font-normal text-2xl text-black mx-4 cursor-pointer"
+      class="font-customFont font-normal text-xl text-black mx-4 cursor-pointer"
     >
       Filters
     </h1>
     <div class="rounded-md mr-3 bg-gray-loginInputText cursor-pointer">
-      <h1 class="px-2 font-customFont text-xl text-white">0</h1>
+      <h1 class="px-1.5 font-customFont text-lg text-white">0</h1>
     </div>
   </div>
 </template>

@@ -7,11 +7,9 @@
         <SearchField></SearchField>
         <Filter></Filter>
       </div>
-            <div
+      <div
         class="flex bg-white h-full items-center justify-center mx-3 mb-3 mt-3 rounded-md shadow-headerTable"
-      >
-        
-      </div>
+      ></div>
       <ClientTable></ClientTable>
     </div>
   </div>
@@ -36,5 +34,4 @@ export default {
 </script>
 
 <style>
-
 </style>

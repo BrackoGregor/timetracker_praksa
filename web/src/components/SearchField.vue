@@ -1,8 +1,8 @@
 <template>
-  <div class="ml-3 bg-white rounded-md flex flex-row items-center h-12">
+  <div class="ml-3 bg-white rounded-md flex flex-row items-center h-10">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="h-6 w-6 ml-4"
+      class="h-5 w-5 ml-4"
       fill="none"
       viewBox="0 0 24 24"
       stroke="black"
@@ -15,7 +15,7 @@
       />
     </svg>
     <input
-      class="pl-3 pr-3 py-2 rounded-md font-customFont font-normal text-2xl placeholder-gray-inputPlaceholder text-gray-inputPlaceholder focus-within:outline-none focus-within:text-black"
+      class="pl-3 pr-3 py-1 rounded-md font-customFont font-normal text-xl placeholder-gray-inputPlaceholder text-gray-inputPlaceholder focus-within:outline-none focus-within:text-black"
       type="text"
       placeholder="Searh in Tasks"
     />

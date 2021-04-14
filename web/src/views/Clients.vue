@@ -7,7 +7,9 @@
         <SearchField></SearchField>
         <Filter></Filter>
       </div>
-      <ClientTable></ClientTable>
+      <div class="flex h-full justify-center mx-3 mb-3 mt-3">
+        <ClientTable></ClientTable>
+      </div>
     </div>
   </div>
 </template>
