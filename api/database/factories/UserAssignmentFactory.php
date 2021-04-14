@@ -2,17 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\users_assignments;
+use App\Models\Assignment;
+use App\Models\User;
+use App\Models\User_Assignment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class UsersAssignmentsFactory extends Factory
+class UserAssignmentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = users_assignments::class;
+    protected $model = User_Assignment::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +24,8 @@ class UsersAssignmentsFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id_users' => User::all()->random()->id,
+            'id_assignments' => Assignment::all()->random()->id
         ];
     }
 }
