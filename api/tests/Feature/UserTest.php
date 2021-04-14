@@ -20,7 +20,7 @@ class UserTest extends TestCase
         $this->authenticate();
 
         $createdUserRole = User_Role::factory()->create();
-        $createdUser = User::factory()->create(
+        $createdUser = User::factory()->make(
             ['id_users_roles' => $createdUserRole->id]
         );
 
@@ -78,7 +78,7 @@ class UserTest extends TestCase
         );
 
         $createdUserRole = User_Role::factory()->create();
-        $createdUser = User::factory()->create(
+        $createdUser = User::factory()->make(
             ['id_users_roles' => $createdUserRole->id]
         );
 
@@ -95,7 +95,7 @@ class UserTest extends TestCase
         );
 
         $createdUserRole = User_Role::factory()->create();
-        $createdUser = User::factory()->create(
+        $createdUser = User::factory()->make(
             ['id_users_roles' => $createdUserRole->id]
         );
         $response = $this->withHeaders([
