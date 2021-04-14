@@ -32,11 +32,6 @@ class UserFactory extends Factory
         ];
     }
 
-    public function role(): HasOne
-    {
-        return $this->hasOne(User::class, 'id_users_roles', 'id');
-    }
-
     /**
      * Indicate that the model's email address should be unverified.
      *
