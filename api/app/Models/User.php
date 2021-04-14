@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
+    protected array $fillable = [
         'firstname',
         'lastname',
         'username',
@@ -45,5 +46,8 @@ class User extends Authenticatable
     ];
 
 
-    protected array $guarded = [];
+    public function user_role(): HasOne
+    {
+        return $this->hasOne(User_Role::class,'id_users_roles', 'id');
+    }
 }
