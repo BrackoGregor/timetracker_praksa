@@ -1,10 +1,15 @@
 <template>
   <ul class="flex flex-row font-customFont items-center">
-    <li class="h-6">
-      <button type="button" @click="onClickFirstPage" :disabled="isInFirstPage">
+    <li class="h-5">
+      <button
+        type="button"
+        class="focus:outline-none"
+        @click="onClickFirstPage"
+        :disabled="isInFirstPage"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
+          class="h-5 w-5 text-gray-inputPlaceholder hover:text-black"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -19,15 +24,16 @@
       </button>
     </li>
 
-    <li class="px-2 h-6">
+    <li class="px-2 h-5">
       <button
         type="button"
         @click="onClickPreviousPage"
+        class="focus:outline-none"
         :disabled="isInFirstPage"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
+          class="h-5 w-5 text-gray-inputPlaceholder hover:text-black"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -47,17 +53,23 @@
         type="button"
         @click="onClickPage(page.name)"
         :disabled="page.isDisabled"
-        class="text-xl p-3 font-medium"
+        class="text-lg p-3 font-medium text-gray-inputPlaceholder focus:outline-none"
+        :class="{ active: isPageActive(page.name) }"
       >
         {{ page.name }}
       </button>
     </li>
 
-    <li class="px-2 h-6">
-      <button type="button" @click="onClickNextPage" :disabled="isInLastPage">
+    <li class="px-2 h-5">
+      <button
+        type="button"
+        class="focus:outline-none"
+        @click="onClickNextPage"
+        :disabled="isInLastPage"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
+          class="h-5 w-5 text-gray-inputPlaceholder hover:text-black"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -72,11 +84,16 @@
       </button>
     </li>
 
-    <li class="h-6">
-      <button type="button" @click="onClickLastPage" :disabled="isInLastPage">
+    <li class="h-5">
+      <button
+        type="button"
+        class="focus:outline-none"
+        @click="onClickLastPage"
+        :disabled="isInLastPage"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
+          class="h-5 w-5 text-gray-inputPlaceholder hover:text-black"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -178,5 +195,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.active {
+  background-color: #032a4e;
+  color: #ffffff;
+}
 </style>
