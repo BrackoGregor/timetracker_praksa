@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Assignment;
 use App\Models\User;
+use Illuminate\Testing\Fluent\AssertableJson;
 use Laravel\Passport\Passport;
 use Tests\TestCase;
 use App\Models\Activity;
@@ -18,11 +19,15 @@ class ActivityTest extends TestCase
     //Programmers write tests for their own code!
     //RULES
 
-
-    public function test_activity_can_create()
+    public function authenticate()
     {
         $user = User::factory()->create();
         Passport::actingAs($user);
+    }
+
+    public function test_activity_can_create()
+    {
+        $this->authenticate();
 
         $createdAssignment = Assignment::factory()->create();
         $createdActivity = Activity::factory()->create(
@@ -34,10 +39,23 @@ class ActivityTest extends TestCase
         $this->assertDatabaseHas('activities', $createdActivity->toArray());
     }
 
+    public function test_activity_can_not_create_without_authorization ()
+    {
+        $createdAssignment = Assignment::factory()->create();
+        $createdActivity = Activity::factory()->create(
+            ['id_assignments' => $createdAssignment->id]
+        );
+
+        $response = $this->withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer nebodelalo'
+        ])->json('POST','/api/v1/activities', $createdActivity->toArray());
+        $response->assertStatus(401);
+    }
+
     public function test_activity_can_delete()
     {
-        $user = User::factory()->create();
-        Passport::actingAs($user);
+        $this->authenticate();
 
         $createdAssignment = Assignment::factory()->create();
         $createdActivity = Activity::factory()->create(
@@ -49,10 +67,23 @@ class ActivityTest extends TestCase
         $this->assertSoftDeleted('activities', $createdActivity->toArray());
     }
 
+    public function test_activity_can_not_delete_without_authorization()
+    {
+        $createdAssignment = Assignment::factory()->create();
+        $createdActivity = Activity::factory()->create(
+            ['id_assignments' => $createdAssignment->id]
+        );
+
+        $response = $this->withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer nebodelalo'
+        ])->json('DELETE','/api/v1/activities/'. $createdActivity->id);
+        $response->assertStatus(401);
+    }
+
     public function test_activity_can_update()
     {
-        $user = User::factory()->create();
-        Passport::actingAs($user);
+        $this->authenticate();
 
         $createdAssignment = Assignment::factory()->create();
         $createdActivityDb = Activity::factory()->create(
@@ -69,10 +100,28 @@ class ActivityTest extends TestCase
         $this->assertDatabaseHas('activities', $createdActivity->toArray());
     }
 
-    public function test_activity_can_get()
+    public function test_activity_can_not_update_without_authorization()
     {
-        $user = User::factory()->create();
-        Passport::actingAs($user);
+        $createdAssignment = Assignment::factory()->create();
+        $createdActivityDb = Activity::factory()->create(
+            ['id_assignments' => $createdAssignment->id]
+        );
+
+        $createdAssignmentDb = Assignment::factory()->create();
+        $createdActivity = Activity::factory()->make(
+            ['id_assignments' => $createdAssignmentDb->id]
+        );
+
+        $response = $this->withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer nebodelalo'
+        ])->json('PUT','/api/v1/activities/'. $createdActivityDb->id, $createdActivity->toArray());
+        $response->assertStatus(401);
+    }
+
+    public function test_activity_can_show()
+    {
+        $this->authenticate();
 
         $createdAssignment = Assignment::factory()->create();
         $createdActivity = Activity::factory()->create(
@@ -84,20 +133,40 @@ class ActivityTest extends TestCase
         $this->assertDatabaseHas('activities', $createdActivity->toArray());
     }
 
+    public function test_activity_can_not_show_without_authorization()
+    {
+        $createdAssignment = Assignment::factory()->create();
+        $createdActivity = Activity::factory()->create(
+            ['id_assignments' => $createdAssignment->id]
+        );
+
+        $response = $this->withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer nebodelalo'
+        ])->json('GET','/api/v1/activities/'. $createdActivity->id);
+        $response->assertStatus(401);
+    }
+
     public function test_activity_can_get_all()
     {
-        $user = User::factory()->create();
-        Passport::actingAs($user);
+        $this->authenticate();
 
-        $response = $this->get('/api/v1/activities?page=1&per_page=3');
+        $response = $this->get('/api/v1/activities');
         $response->assertStatus(200);
-        $this->assertNotEmpty($response->json('data'));
+    }
+
+    public function test_activity_can_not_get_all_without_authorization()
+    {
+        $response = $this->withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer nebodelalo'
+        ])->json('GET','/api/v1/activities?page=1&per_page=3');
+        $response->assertStatus(401);
     }
 
     public function test_activity_can_not_show_activity_with_invalid_id()
     {
-        $user = User::factory()->create();
-        Passport::actingAs($user);
+        $this->authenticate();
 
         $response = $this->get('/api/v1/activities/'. 0);
         $response->assertStatus(404);
@@ -105,8 +174,7 @@ class ActivityTest extends TestCase
 
     public function test_activity_can_not_update_activity_with_invalid_id()
     {
-        $user = User::factory()->create();
-        Passport::actingAs($user);
+        $this->authenticate();
 
         $createdAssignment = Assignment::factory()->create();
         $createdActivity = Activity::factory()->create(
@@ -119,8 +187,7 @@ class ActivityTest extends TestCase
 
     public function test_activity_can_not_delete_activity_with_invalid_id()
     {
-        $user = User::factory()->create();
-        Passport::actingAs($user);
+        $this->authenticate();
 
         $response = $this->delete('/api/v1/activities/'. 0);
         $response->assertStatus(404);
