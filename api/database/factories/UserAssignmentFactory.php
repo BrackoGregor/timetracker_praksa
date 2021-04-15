@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Assignment;
+use App\Models\User;
 use App\Models\User_Assignment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +24,8 @@ class UserAssignmentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id_users' => User::all()->random()->id,
+            'id_assignments' => Assignment::all()->random()->id
         ];
     }
 }

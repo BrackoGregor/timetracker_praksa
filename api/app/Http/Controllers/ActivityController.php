@@ -12,21 +12,12 @@ class ActivityController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function index():JsonResponse
+    public function index(Request $request):JsonResponse
     {
-        return response()->json(Activity::all());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return JsonResponse
-     */
-    public function create():JsonResponse
-    {
-        //
+        return response()->json(Activity::paginate($request->get('per_page', 15)));
     }
 
     /**
@@ -37,9 +28,15 @@ class ActivityController extends Controller
      */
     public function store(Request $request):JsonResponse
     {
-        return response()->json(Activity::create($request->all()));
+        $validated = $request->validate([
+            'title' => 'required|string|max:50',
+            'start_time' => 'required|date',
+            'end_time' => 'required|date',
+            'comment' => 'required|string',
+            'id_assignments' => 'required|integer'
+        ]);
 
-        //redirect
+        return response()->json(Activity::create($validated), 201);
     }
 
     /**
@@ -54,17 +51,6 @@ class ActivityController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Activity $activity
-     * @return JsonResponse
-     */
-    public function edit(Activity $activity):JsonResponse
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param Request $request
@@ -73,9 +59,15 @@ class ActivityController extends Controller
      */
     public function update(Request $request, Activity $activity):JsonResponse
     {
-        return response()->json($activity->update($request->all()));
+        $validated = $request->validate([
+            'title' => 'required|string|max:50',
+            'start_time' => 'required|date',
+            'end_time' => 'required|date',
+            'comment' => 'required|string',
+            'id_assignments' => 'required|integer'
+        ]);
 
-        //redirect
+        return response()->json($activity->update($validated));
     }
 
     /**
@@ -87,6 +79,6 @@ class ActivityController extends Controller
      */
     public function destroy(Activity $activity):JsonResponse
     {
-        return response()->json($activity->delete());
+        return response()->json($activity->delete(), 204);
     }
 }

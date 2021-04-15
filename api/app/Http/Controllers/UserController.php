@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class ContactController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        return response()->json(Contact::paginate($request->get('per_page', 15)));
+        return response()->json(User::paginate($request->get('per_page', 15)));
     }
 
     /**
@@ -31,61 +31,63 @@ class ContactController extends Controller
         $validated = $request->validate([
             'firstname' => 'required|string|max:50',
             'lastname' => 'required|string|max:80',
-            'email' => 'required|string|email|max:80',
-            'phone' => 'required|string|max:30',
-            'id_client' => 'required|integer'
+            'username' => 'required|string|unique:users|max:45',
+            'email' => 'required|string|email|unique:users|max:80',
+            'password' => 'required|string|min:6|max:150',
+            'id_users_roles' => 'required|integer'
         ]);
 
-        $contact = Contact::create($validated);
+        $user = User::create($validated);
 
-        return response()->json($contact, 201);
+        return response()->json($user, 201);
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Contact $contact
+     * @param User $user
      * @return JsonResponse
      */
-    public function show(Contact $contact): JsonResponse
+    public function show(User $user): JsonResponse
     {
-        return response()->json($contact);
+        return response()->json($user);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Contact $contact
+     * @param User $user
      * @return JsonResponse
      */
-    public function update(Request $request, Contact $contact): JsonResponse
+    public function update(Request $request, User $user): JsonResponse
     {
         $validated = $request->validate([
             'firstname' => 'required|string|max:50',
             'lastname' => 'required|string|max:80',
-            'email' => 'required|string|email|max:80',
-            'phone' => 'required|string|max:30',
-            'id_client' => 'required|integer'
+            'username' => 'required|string|unique:users|max:45',
+            'email' => 'required|string|email|unique:users|max:80',
+            'password' => 'required|string|min:6|max:150',
+            'id_users_roles' => 'required|integer'
         ]);
 
-        $contact->update($validated);
+        $user->update($validated);
 
-        return response()->json($contact, 200);
+        return response()->json($user, 200);
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Contact $contact
+     * @param User $user
      * @return JsonResponse
      * @throws Exception
      */
-    public function destroy(Contact $contact): JsonResponse
+    public function destroy(User $user): JsonResponse
     {
-        $contact->delete();
+        $user->delete();
 
         return response()->json(null, 204);
     }

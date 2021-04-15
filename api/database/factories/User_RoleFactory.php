@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\User_Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class UserRoleFactory extends Factory
+class User_RoleFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -22,7 +22,7 @@ class UserRoleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'role' => $this->faker->colorName
         ];
     }
 }

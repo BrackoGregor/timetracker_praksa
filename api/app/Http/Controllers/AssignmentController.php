@@ -12,21 +12,12 @@ class AssignmentController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function index():JsonResponse
+    public function index(Request $request):JsonResponse
     {
-        return response()->json(Assignment::all());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return JsonResponse
-     */
-    public function create(): JsonResponse
-    {
-        // show view
+        return response()->json(Assignment::paginate($request->get('per_page', 15)));
     }
 
     /**
@@ -37,9 +28,14 @@ class AssignmentController extends Controller
      */
     public function store(Request $request):JsonResponse
     {
-        return response()->json(Assignment::create($request->all()));
+        $validated = $request->validate([
+            'work_description' => 'required|string|max:200',
+            'developer_description' => 'required|string|max:200',
+            'id_clients' => 'required|integer',
+            'id_statuses' => 'required|integer'
+        ]);
 
-        //redirect
+        return response()->json(Assignment::create($validated), 201);
     }
 
     /**
@@ -54,17 +50,6 @@ class AssignmentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Assignment $assignment
-     * @return JsonResponse
-     */
-    public function edit(Assignment $assignment):JsonResponse
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param Request $request
@@ -73,9 +58,14 @@ class AssignmentController extends Controller
      */
     public function update(Request $request, Assignment $assignment):JsonResponse
     {
-        return response()->json($assignment->update($request->all()));
+        $validated = $request->validate([
+            'work_description' => 'required|string|max:200',
+            'developer_description' => 'required|string|max:200',
+            'id_clients' => 'required|integer',
+            'id_statuses' => 'required|integer'
+        ]);
 
-        //redirect
+        return response()->json($assignment->update($validated));
     }
 
     /**
@@ -87,6 +77,6 @@ class AssignmentController extends Controller
      */
     public function destroy(Assignment $assignment):JsonResponse
     {
-        return response()->json($assignment->delete());
+        return response()->json($assignment->delete(), 204);
     }
 }

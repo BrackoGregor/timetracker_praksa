@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
             $table->string('firstname', 50);
             $table->string('lastname', 80);
             $table->string('email', 80);
-            $table->integer('phone');
+            $table->string('phone', 30);
             $table->bigInteger('id_client')->unsigned();
             $table->foreign('id_client')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
