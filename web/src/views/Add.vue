@@ -5,6 +5,7 @@
       <div class="flex flex-row">
         <SearchField></SearchField>
         <Filter></Filter>
+        <button class="">Create new</button>
       </div>
       <div class="flex h-full justify-center mx-3 mb-3 mt-3">
         <TodayTable></TodayTable>
@@ -18,7 +19,6 @@ import TodayTable from "../components/TodayTable";
 import HeaderTable from "../components/HeaderTable";
 import SearchField from "../components/SearchField";
 import Filter from "../components/Filter";
-import ExtendedNavbar from "../components/ExtendedNavbar";
 
 export default {
   components: {
@@ -26,7 +26,6 @@ export default {
     HeaderTable,
     SearchField,
     Filter,
-    ExtendedNavbar,
   },
 };
 </script>
