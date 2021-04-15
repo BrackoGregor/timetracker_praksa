@@ -18,7 +18,6 @@ import TodayTable from "../components/TodayTable";
 import HeaderTable from "../components/HeaderTable";
 import SearchField from "../components/SearchField";
 import Filter from "../components/Filter";
-import ExtendedNavbar from "../components/ExtendedNavbar";
 
 export default {
   components: {
@@ -26,7 +25,6 @@ export default {
     HeaderTable,
     SearchField,
     Filter,
-    ExtendedNavbar,
   },
 };
 </script>
