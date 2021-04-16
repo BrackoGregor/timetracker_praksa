@@ -5,7 +5,11 @@
       <div class="flex flex-row">
         <SearchField></SearchField>
         <Filter></Filter>
-        <button class="">Create new</button>
+        <button
+          class="bg-blue ml-3 rounded-md px-3 font-customFont font-normal text-xl text-white hover:bg-blue-light focus:outline-none"
+        >
+          Create new
+        </button>
       </div>
       <div class="flex h-full justify-center mx-3 mb-3 mt-3">
         <TodayTable></TodayTable>
