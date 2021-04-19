@@ -29,6 +29,7 @@ export default {
     Filter,
     ExtendedNavbar,
   },
+
 };
 </script>
 
