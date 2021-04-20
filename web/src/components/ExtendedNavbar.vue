@@ -10,7 +10,7 @@
             <input
               type="text"
               class="placeholder-opacity-25 w-36 bg-blue-light text-center text-white font-customFont text-xl"
-              :placeholder=" 'Search for '+[[ currentRouteName ]]"
+              :placeholder="'Search for ' + [[currentRouteName]]"
             />
           </div>
           <hr class="w-44 object-center text-white opacity-50 mt-1" />
@@ -21,54 +21,38 @@
         v-for="con in content"
         :key="con.name"
       >
-        <router-link :to="{ name: con.route }">
+        
           <h1 class="text-white opacity-70 font-customFont text-xl">
             {{ con.name }}
           </h1>
-        </router-link>
+        
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      content: [
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-        { name: "Solve-x d.o.o.", route: "Clients" },
-      ],
+      content: [],
     };
   },
   computed: {
     currentRouteName() {
-        return this.$route.name.toLowerCase().trim();
-    }
-}
+      return this.$route.name.toLowerCase().trim();
+    },
+  },
+  mounted() {
+    axios.get("http://127.0.0.1:8000/api/v1/clients")
+    .then((response) => {
+      this.content = response.data.data;
+      this.name = response.data.data.name;
+      console.warn(response.data.data);
+    });
+  },
 };
 </script>
 
