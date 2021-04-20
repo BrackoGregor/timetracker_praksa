@@ -48,7 +48,7 @@
       </button>
     </li>
 
-    <li v-for="page in pages" key="page.name">
+    <li v-for="page in pages" :key="page.name">
       <button
         type="button"
         @click="onClickPage(page.name)"
