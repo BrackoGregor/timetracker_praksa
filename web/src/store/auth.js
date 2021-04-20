@@ -4,6 +4,8 @@ export default {
   namespaced: true,
   state: {
     token: null,
+    refreshToken: null,
+    //grand type refresh token
     user: null
   },
 
@@ -33,6 +35,16 @@ export default {
 
       dispatch('attempt', response.data.token);
     },
+
+
+    async register({
+        dispatch
+      },
+      register_data) {
+      let response = await axios.post("/api/v1/users", register_data);
+      dispatch("attemp")
+    },
+
 
     async attempt({
       commit
