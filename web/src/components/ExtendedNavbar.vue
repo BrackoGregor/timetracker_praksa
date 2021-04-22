@@ -10,7 +10,7 @@
             <input
               type="text"
               class="placeholder-opacity-25 w-36 bg-blue-light text-center text-white font-customFont text-xl"
-              placeholder="Search for clients"
+              :placeholder="searchText"
             />
           </div>
           <hr class="w-44 object-center text-white opacity-50 mt-1" />
@@ -18,14 +18,11 @@
       </nav>
       <div
         class="ml-4 mr-4 h-8 w-50 text-center"
-        v-for="con in content"
+        v-for="con in clients"
         :key="con.name"
       >
-        <router-link :to="{ name:'ClientsID', params:{id: con.id} }">
-          <h1
-            class="text-white opacity-70 font-customFont text-xl"
-            @click="send(con.id)"
-          >
+        <router-link :to="{ name: 'ClientsID', params: { id: con.id }}">
+          <h1 class="text-white opacity-70 font-customFont text-xl" @click="sendId(con.id)">
             {{ con.name }}
           </h1>
         </router-link>
@@ -35,11 +32,18 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
+  props: {
+    clients: {
+      type: Array
+    },
+    searchText:{
+      type: String
+    }
+  },
   data() {
     return {
-        content: [],
+      content: [],
     };
   },
   computed: {
@@ -47,16 +51,13 @@ export default {
       return this.$route.name.toLowerCase().trim();
     },
   },
-  mounted() {
-    axios.get("/api/v1/clients").then((response) => {
-      this.content = response.data.data;
-    });
-  },
-  methods: {
-    send(event) {
-      console.log(event);
-    },
-  },
+    methods: {
+      sendId(event){
+        //console.log(event);
+        this.$emit('currentId', event);
+      }
+    }
+
 };
 </script>
 

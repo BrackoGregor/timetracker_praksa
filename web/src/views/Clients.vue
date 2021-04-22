@@ -1,8 +1,12 @@
 <template>
   <div class="w-full flex bg-gray-light">
-    <ExtendedNavbar></ExtendedNavbar>
+    <ExtendedNavbar
+      :clients="clients"
+      :searchText="searchText"
+      @currentId="getCurrentId"
+    ></ExtendedNavbar>
     <div class="flex flex-col w-full">
-      <HeaderTable></HeaderTable>
+      <HeaderTable :clients="clients" :currentId="currentId"></HeaderTable>
       <div class="flex flex-row">
         <SearchField></SearchField>
         <Filter></Filter>
@@ -32,14 +36,21 @@ export default {
   },
   data() {
     return {
-      clients:[],
-      mounted() {
-        axios.get("/api/v1/clients").then((response) => {
-          this.content = response.data.data;
-        });
-      },
+      clients: [],
+      searchText: "Search for clients",
+      currentId:0,
     };
   },
+  mounted() {
+    axios.get("/api/v1/clients").then((response) => {
+      this.clients = response.data.data;
+    });
+  },
+   methods: {
+      getCurrentId(event){
+        this.currentId= event;
+      }
+    }
 };
 </script>
 
