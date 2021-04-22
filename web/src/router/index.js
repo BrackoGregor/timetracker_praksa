@@ -4,40 +4,45 @@ import {
 } from "vue-router";
 
 const routes = [{
-    path: "/login",
-    name: "Login",
-    component: () => import("../views/Login.vue"),
-  },
-  {
-    path: "/register",
-    name: "Register",
-    component: () => import("../views/Register.vue"),
-  },
-  {
-    path: "/settings",
-    name: "Settings",
-    component: () => import("../views/Settings.vue"),
-  },
-  {
-    path: "/clients",
-    name: "Clients",
-    component: () => import("../views/Clients.vue"),
-  },
-  {
-    path: "/projects",
-    name: "Projects",
-    component: () => import("../views/Projects.vue"),
-  },
-  {
-    path: "/add",
-    name: "Add",
-    component: () => import("../views/Add.vue"),
-  },
-  {
-    path: "/calendar",
-    name: "Calendar",
-    component: () => import("../views/Calendar.vue"),
-  },
+  path: "/login",
+  name: "Login",
+  component: () => import("../views/Login.vue"),
+},
+{
+  path: "/register",
+  name: "Register",
+  component: () => import("../views/Register.vue"),
+},
+{
+  path: "/settings",
+  name: "Settings",
+  component: () => import("../views/Settings.vue"),
+},
+{
+  path: "/clients",
+  name: "Clients",
+  component: () => import("../views/Clients.vue"),
+},
+{
+  path: "/clients/:id",
+  name: "ClientsID",
+  component: () => import("../views/Clients.vue"),
+},
+{
+  path: "/projects",
+  name: "Projects",
+  component: () => import("../views/Projects.vue"),
+},
+{
+  path: "/add",
+  name: "Add",
+  component: () => import("../views/Add.vue"),
+},
+{
+  path: "/calendar",
+  name: "Calendar",
+  component: () => import("../views/Calendar.vue"),
+},
 ];
 
 const router = createRouter({

@@ -20,6 +20,7 @@ import HeaderTable from "../components/HeaderTable";
 import SearchField from "../components/SearchField";
 import Filter from "../components/Filter";
 import ExtendedNavbar from "../components/ExtendedNavbar";
+import axios from "axios";
 
 export default {
   components: {
@@ -28,6 +29,16 @@ export default {
     SearchField,
     Filter,
     ExtendedNavbar,
+  },
+  data() {
+    return {
+      clients:[],
+      mounted() {
+        axios.get("/api/v1/clients").then((response) => {
+          this.content = response.data.data;
+        });
+      },
+    };
   },
 };
 </script>

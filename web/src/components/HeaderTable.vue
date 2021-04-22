@@ -16,25 +16,36 @@
       <!--TODO: GET AS prop -->
     </h1>
     <h1
+      v-else-if="currentRouteName == 'Clients/1'"
+      class="font-customFont font-medium text-white text-2xl"
+    >
+      dasadsdasds
+      <!--TODO: GET AS prop -->
+    </h1>
+    <h1
       v-else-if="currentRouteName == 'Projects'"
       class="font-customFont font-medium text-white text-2xl"
     >
       Project
       <!--TODO: GET AS prop -->
     </h1>
+
+
+    <h1>
+       {{ currentRouteName }}
+    </h1>
   </div>
 </template>
 
 <script>
 import moment from "moment";
-
 export default {
   data() {
     return {};
   },
   computed: {
     currentRouteName() {
-      return this.$route.name.trim();
+      return this.$route.name;
     },
     currentDate() {
       return moment().format("LL");
