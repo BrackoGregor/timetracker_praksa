@@ -6,6 +6,7 @@ use App\Models\Assignment;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AssignmentController extends Controller
 {
@@ -18,6 +19,19 @@ class AssignmentController extends Controller
     public function index(Request $request):JsonResponse
     {
         return response()->json(Assignment::paginate($request->get('per_page', 15)));
+        //return response()->json(Assignment::all());
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function get_assignments(int $id):JsonResponse
+    {
+        $assignments = DB::table('assignments')->where('id_clients', '=', $id)->get();
+        return response()->json($assignments);
     }
 
     /**
