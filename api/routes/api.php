@@ -29,6 +29,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1'], function() {
 
     Route::post('users', [UserController::class, 'store']);
+    Route::get('assignmentsClient/{id}', [AssignmentController::class, 'get_assignments']);
 
     Route::group(['middleware' => ['auth:api']], function() {
         Route::apiResources([
