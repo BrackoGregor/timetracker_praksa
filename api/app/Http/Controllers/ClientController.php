@@ -10,8 +10,25 @@ use Illuminate\Http\Request;
 class ClientController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
+     * @OA\Get(
+     *      path="/clients",
+     *      operationId="getClientsList",
+     *      tags={"Clients"},
+     *      summary="Get list of clients",
+     *      description="Returns list of clients",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
      * @param $request
      * @return JsonResponse
      */
@@ -24,8 +41,32 @@ class ClientController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
-     *
+     * @OA\Post(
+     *      path="/clients",
+     *      operationId="storeClient",
+     *      tags={"Clients"},
+     *      summary="Store new client",
+     *      description="Returns client data",
+     *      @OA\RequestBody(
+     *          required=true
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
      * @param Request $request
      * @return JsonResponse
      */
@@ -46,8 +87,38 @@ class ClientController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
+     * @OA\Get(
+     *      path="/clients/{client}",
+     *      operationId="getClientById",
+     *      tags={"Clients"},
+     *      summary="Get client information",
+     *      description="Returns client data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Client id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
      * @param Client $client
      * @return JsonResponse
      */
@@ -58,8 +129,45 @@ class ClientController extends Controller
 
 
     /**
-     * Update the specified resource in storage.
-     *
+     * @OA\Put(
+     *      path="/clients/{client}",
+     *      operationId="updateClient",
+     *      tags={"Clients"},
+     *      summary="Update existing client",
+     *      description="Returns updated client data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Client id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true
+     *      ),
+     *      @OA\Response(
+     *          response=202,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
      * @param Request $request
      * @param Client $client
      * @return JsonResponse
@@ -81,8 +189,39 @@ class ClientController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
+     * @OA\Delete(
+     *      path="/clients/{client}",
+     *      operationId="deleteClient",
+     *      tags={"Clients"},
+     *      summary="Delete existing client",
+     *      description="Deletes a record and returns no content",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Client id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
      * @param Client $client
      * @return JsonResponse
      * @throws Exception

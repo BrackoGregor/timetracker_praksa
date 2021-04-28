@@ -10,8 +10,27 @@ use Illuminate\Support\Facades\DB;
 
 class AssignmentController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *      path="/assignments",
+     *      operationId="getAssignmentsList",
+     *      tags={"Assignments"},
+     *      summary="Get list of assignments",
+     *      description="Returns list of assignments",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
      *
      * @param Request $request
      * @return JsonResponse
@@ -19,11 +38,37 @@ class AssignmentController extends Controller
     public function index(Request $request):JsonResponse
     {
         return response()->json(Assignment::paginate($request->get('per_page', 15)));
-        //return response()->json(Assignment::all());
     }
 
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *      path="/assignmentsClient/{id}",
+     *      operationId="getAssignmentsList",
+     *      tags={"Assignments"},
+     *      summary="Get list of assignments for client",
+     *      description="Returns list of assignments for specific client",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Client id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
      *
      * @param int $id
      * @return JsonResponse
@@ -35,8 +80,32 @@ class AssignmentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
+     * @OA\Post(
+     *      path="/assignments",
+     *      operationId="storeAssignment",
+     *      tags={"Assignments"},
+     *      summary="Store new assignment",
+     *      description="Returns assignment data",
+     *      @OA\RequestBody(
+     *          required=true
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
      * @param Request $request
      * @return JsonResponse
      */
@@ -53,8 +122,38 @@ class AssignmentController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
+     * @OA\Get(
+     *      path="/assignments/{assignment}",
+     *      operationId="getAssignmentById",
+     *      tags={"Assignments"},
+     *      summary="Get assignment information",
+     *      description="Returns assignment data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Assignment id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
      * @param Assignment $assignment
      * @return JsonResponse
      */
@@ -64,8 +163,45 @@ class AssignmentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
+     * @OA\Put(
+     *      path="/assignments/{assignment}",
+     *      operationId="updateAssignment",
+     *      tags={"Assignments"},
+     *      summary="Update existing assignment",
+     *      description="Returns updated assignment data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Assignment id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true
+     *      ),
+     *      @OA\Response(
+     *          response=202,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
      * @param Request $request
      * @param Assignment $assignment
      * @return JsonResponse
@@ -83,8 +219,39 @@ class AssignmentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
+     * @OA\Delete(
+     *      path="/assignments/{assignment}",
+     *      operationId="deleteAssignment",
+     *      tags={"Assignments"},
+     *      summary="Delete existing assignment",
+     *      description="Deletes a record and returns no content",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="Assignment id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
      * @param Assignment $assignment
      * @return JsonResponse
      * @throws Exception
