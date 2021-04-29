@@ -36,16 +36,22 @@ export default {
       return dispatch('attempt', response.data.access_token)
     },
 
-    async register(_,register_data) {
+    async register(_, register_data) {
       let response = await axios.post("/api/v1/users", register_data)
       console.log(response.data)
     },
 
 
     async attempt({ //Check if token is valid
-      commit
+      commit, state
     }, token) {
-      commit('SET_TOKEN', token)
+      if (token) {
+        commit('SET_TOKEN', token)
+      }
+
+      if (!state.token) {
+        return
+      }
 
       try {
         let response = await axios.get('/api/user')
