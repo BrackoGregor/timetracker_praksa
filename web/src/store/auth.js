@@ -10,7 +10,7 @@ export default {
   },
 
   getters: {
-    isLogged(state) {
+    authenticated(state) {
       return state.token && state.user;
     },
 
@@ -28,33 +28,17 @@ export default {
     }
   },
   actions: {
-    /*async login({
+    async login({
       dispatch
     }, login_data) {
-      let response = await axios.post("/oauth/token", login_data);
+      let response = await axios.post("/oauth/token", login_data)
 
-      dispatch('attempt', response.data.token);
-    },*/
-
-     async login(_,login_data) {
-      let response = await axios.post("/oauth/token", login_data);
-      console.log(response.data);
+      return dispatch('attempt', response.data.access_token)
     },
 
-
     async register(_,register_data) {
-        let response = await axios.post("/api/v1/users", register_data);
-
-      /*let response1 = await axios.post("/api/v1/users", register_data).then(function (response) {
-        console.log(response.statusText);
-      }, function (error) {
-        console.log(error.response.data.errors);
-      });
-      dispatch('register', response1);*/
-
-      console.log(response.data);
-
-
+      let response = await axios.post("/api/v1/users", register_data)
+      console.log(response.data)
     },
 
 
@@ -64,13 +48,10 @@ export default {
       commit('SET_TOKEN', token)
 
       try {
-        let response = await axios.get('/api/user', {
-          headers: {
-            'Authorization': 'Bearer ' + token
-          }
-        })
+        let response = await axios.get('/api/user')
 
         commit('SET_USER', response.data)
+        //console.log(state.user);
       } catch (e) {
         commit('SET_TOKEN', null)
         commit('SET_USER', null)

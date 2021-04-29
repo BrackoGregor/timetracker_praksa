@@ -46,10 +46,10 @@
                     src="../assets/person.svg"
                     class="rounded-full w-12 h-12 mb-3 mr-0.5 ml-4 border-solid border-2 border-white"
                   />
-                  <h1
+                  <h1  v-if="authenticated"
                     class="text-white mt-2 ml-4 mr-4 text-2xl font-customFont"
                   >
-                    Tomas Kovačič
+                    {{ user.firstname + " " + user.lastname }}
                   </h1>
                 </span>
               </div>
@@ -67,6 +67,11 @@
                 </span>
               </router-link>
             </li>
+            <template>
+            <span class="flex hover:opacity-100 opacity-50">
+              <h1 class="text-white font-customFont text-lg">Sign out</h1>
+            </span>
+            </template>
           </ul>
         </div>
       </div>
@@ -75,6 +80,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
@@ -118,18 +125,21 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapGetters({
+      authenticated: "auth/authenticated",
+      user: "auth/user",
+    }),
+  },
 };
 </script>
 
 <style>
-
-a.router-link-exact-active>span {
-    @apply opacity-100;
+a.router-link-exact-active > span {
+  @apply opacity-100;
 }
 
-a.router-link-exact-active>span>img {
-    @apply opacity-100;
+a.router-link-exact-active > span > img {
+  @apply opacity-100;
 }
-
-
 </style>

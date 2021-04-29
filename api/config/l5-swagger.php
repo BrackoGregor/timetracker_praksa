@@ -124,7 +124,7 @@ return [
              * @see \OpenApi\scan
              */
             'processors' => array_merge(
-                \OpenApi\Analysis::processors(),
+                //\OpenApi\Analysis::processors(),
                 [
                     // new \App\SwaggerProcessors\SchemaQueryParameter(),
                 ]

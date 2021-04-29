@@ -75,6 +75,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import router from "../router"; 
 
 export default {
   data() {
@@ -95,8 +96,14 @@ export default {
     }),
 
     submit() {
-      console.log(this.form);
-      this.login(this.form);
+      //console.log(this.form);
+      this.login(this.form).then(()=> {
+        router.replace({
+          name:'Add'
+        })
+      }).catch(()=>{
+        console.log("Prijava neuspešna!")
+      })
     },
   },
 };
