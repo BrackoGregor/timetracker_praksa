@@ -28,25 +28,37 @@ export default {
     }
   },
   actions: {
-    async login({
+    /*async login({
       dispatch
     }, login_data) {
-      let response = await axios.post("/api/login", login_data); //TODO fix endpoint
+      let response = await axios.post("/oauth/token", login_data);
 
       dispatch('attempt', response.data.token);
+    },*/
+
+     async login(_,login_data) {
+      let response = await axios.post("/oauth/token", login_data);
+      console.log(response.data);
     },
 
 
-    async register({
-        dispatch
-      },
-      register_data) {
-      let response = await axios.post("/api/v1/users", register_data);
-      dispatch("attemp")
+    async register(_,register_data) {
+        let response = await axios.post("/api/v1/users", register_data);
+
+      /*let response1 = await axios.post("/api/v1/users", register_data).then(function (response) {
+        console.log(response.statusText);
+      }, function (error) {
+        console.log(error.response.data.errors);
+      });
+      dispatch('register', response1);*/
+
+      console.log(response.data);
+
+
     },
 
 
-    async attempt({
+    async attempt({ //Check if token is valid
       commit
     }, token) {
       commit('SET_TOKEN', token)

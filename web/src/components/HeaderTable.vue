@@ -16,21 +16,18 @@
       <!--TODO: GET AS prop -->
     </h1>
     <h1
-      v-else-if="currentRouteId == currentId"
-      class="font-customFont font-medium text-white text-2xl"
-    >
-      {{clients[currentId-1].name}}
-      <!--TODO: GET AS prop -->
-    </h1>
-    <h1
       v-else-if="currentRouteName == 'Projects'"
       class="font-customFont font-medium text-white text-2xl"
     >
       Project
       <!--TODO: GET AS prop -->
     </h1>
-    <h1>
-
+    <h1
+      v-else
+      class="font-customFont font-medium text-white text-2xl"
+    >
+       {{currentRouteId()}}
+      <!--TODO: GET AS prop -->
     </h1>
   </div>
 </template>
@@ -40,10 +37,11 @@ import moment from "moment";
 export default {
   props: {
     clients: Array,
-    currentId: Number,
   },
   data() {
-    return {};
+    return {
+      currentId: 0,
+    };
   },
   computed: {
     currentRouteName() {
@@ -52,10 +50,12 @@ export default {
     currentDate() {
       return moment().format("LL");
     },
-    currentRouteId(){
-      return this.$route.params.id;
-    }
   },
+  methods: {
+    currentRouteId() {
+      return this.$route.params.id;
+    },
+  }
 };
 </script>
 

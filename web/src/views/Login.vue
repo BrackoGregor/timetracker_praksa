@@ -14,7 +14,7 @@
         </div>
         <div class="flex flex-col">
           <input
-            v-model="form.email"
+            v-model="form.username"
             name="email"
             type="email"
             autocomplete="email"
@@ -80,8 +80,12 @@ export default {
   data() {
     return {
       form: {
-        email: "",
+        grant_type: "password",
+        username: "",
         password: "",
+        client_id: "2",
+        client_secret: "KpKQfp5URCm8cn3h4ZPeF16kjnSLfCcuUBrTkDrv",
+        scope: null,
       },
     };
   },
@@ -91,6 +95,7 @@ export default {
     }),
 
     submit() {
+      console.log(this.form);
       this.login(this.form);
     },
   },

@@ -94,6 +94,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import router from "../router"; 
 
 export default {
   data() {
@@ -104,7 +105,7 @@ export default {
         username: "",
         email: "",
         password: "",
-        id_users_roles: 2,
+        id_users_roles: 1,
       },
     };
   },
@@ -114,8 +115,14 @@ export default {
     }),
 
     submit() {
-      //console.log(this.form.firstname);
-      this.register(this.form);
+      console.log(this.form);
+      this.register(this.form).then(function (response) {
+        console.log(response);
+        router.push("/login");
+      }, function (error) {
+        console.log(error.response.data.errors);
+      });
+      
     },
   },
 };

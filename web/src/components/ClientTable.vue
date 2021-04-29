@@ -38,50 +38,32 @@
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-light">
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
+              <tr v-for="project in projects" :key="project.id ">
+                <td class="px-6 py-4 whitespace-nowrap" v-if="project.id_clients==currentRouteId">
                   <div class="flex items-center justify-center">
-                    <h1 class="font-customFont">Mobilna aplikacija</h1>
+                    <h1 class="font-customFont">
+                      {{ project.work_description }}
+                    </h1>
                   </div>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <h1 class="font-customFont">TODO lista</h1>
+                <td class="px-6 py-4 whitespace-nowrap" v-if="project.id_clients==currentRouteId">
+                  <h1 class="font-customFont">
+                    {{ project.developer_description }}
+                  </h1>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <h1 class="font-customFont">11.01.2021, 8:11</h1>
+                <td class="px-6 py-4 whitespace-nowrap" v-if="project.id_clients==currentRouteId">
+                  <h1 class="font-customFont">{{ project.created_at }}</h1>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <h1 class="font-customFont">11.01.2021, 9:11</h1>
+                <td class="px-6 py-4 whitespace-nowrap" v-if="project.id_clients==currentRouteId">
+                  <h1 class="font-customFont">{{ project.updated_at }}</h1>
                 </td>
                 <td
                   class="px-6 py-4 whitespace-nowrap text-center font-customFont font-medium"
+                  v-if="project.id_clients==currentRouteId"
                 >
                   <a href="#" class="text-blue hover:text-blue-light">Edit</a>
                 </td>
               </tr>
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center justify-center">
-                    <h1 class="font-customFont">Mobilna aplikacija</h1>
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <h1 class="font-customFont">TODO lista</h1>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <h1 class="font-customFont">11.01.2021, 8:11</h1>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <h1 class="font-customFont">11.01.2021, 9:11</h1>
-                </td>
-                <td
-                  class="px-6 py-4 whitespace-nowrap font-customFont font-medium text-center"
-                >
-                  <a href="#" class="text-blue hover:text-blue-light">Edit</a>
-                </td>
-              </tr>
-
-              <!-- More items... -->
             </tbody>
           </table>
         </div>
@@ -103,6 +85,9 @@
 import Pagination from "../components/Pagination";
 
 export default {
+  props: {
+    projects: Array,
+  },
   data() {
     return {
       currentPage: 1,
@@ -115,6 +100,14 @@ export default {
     onPageChange(page) {
       console.log(page);
       this.currentPage = page;
+    },
+  },
+  computed: {
+    currentRouteId() {
+      return this.$route.params.id;
+    },
+    filtered_projects: function () {
+      return this.projects.filter(this.projects.id_clients == this.currentId);
     },
   },
   components: { Pagination },
