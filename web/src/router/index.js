@@ -3,6 +3,8 @@ import {
   createWebHistory
 } from "vue-router";
 
+import store from '@/store'
+
 const routes = [{
   path: "/login",
   name: "Login",
@@ -17,6 +19,14 @@ const routes = [{
   path: "/settings",
   name: "Settings",
   component: () => import("../views/Settings.vue"),
+  beforeEnter:(to, from, next) => {
+    if(!store.getters['auth/authenticated']){
+      return next({
+        name:'Login'
+      })
+    }
+    next()
+  }
 },
 {
   path: "/clients",
