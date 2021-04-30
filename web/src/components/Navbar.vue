@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row h-screen shadow-sideBar">
+  <div class="flex flex-row h-screen shadow-sideBar" v-if="authenticated">
     <nav class="bg-blue w-12 justify-between flex flex-col" v-show="arrow">
       <div class="mt-5 mb-10">
         <a href="#" v-on:click="arrow = !arrow">
@@ -47,7 +47,7 @@
                     class="rounded-full w-12 h-12 mb-3 mr-0.5 ml-4 border-solid border-2 border-white"
                   />
                   <h1
-                    v-if="authenticated"
+                    
                     class="text-white mt-2 ml-4 mr-4 text-2xl font-customFont"
                   >
                     {{ user.firstname + " " + user.lastname }}
