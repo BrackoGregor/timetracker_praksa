@@ -21,6 +21,14 @@
                 </span>
               </router-link>
             </li>
+            <li>
+              <span style="cursor: pointer" @click.prevent="signOut">
+                <img
+                    src="../assets/logout.svg"
+                    class="rounded-full w-5 h-5 mb-3 mx-auto mt-80 hover:opacity-100 opacity-50"
+                  />
+              </span>
+            </li>
           </ul>
         </div>
       </div>
@@ -47,7 +55,6 @@
                     class="rounded-full w-12 h-12 mb-3 mr-0.5 ml-4 border-solid border-2 border-white"
                   />
                   <h1
-                    
                     class="text-white mt-2 ml-4 mr-4 text-2xl font-customFont"
                   >
                     {{ user.firstname + " " + user.lastname }}
@@ -68,9 +75,19 @@
                 </span>
               </router-link>
             </li>
-              <span class="flex hover:opacity-100 opacity-50">
-                <h1 @click.prevent="signOut" class="text-white font-customFont text-lg">Sign out</h1>
+            <li class="mb-2 mt-80">
+              <span class="flex hover:opacity-100 opacity-50" style="cursor: pointer" @click.prevent="signOut">
+                <img
+                    src="../assets/logout.svg"
+                    class="rounded-full w-5 h-5 mb-3 mr-2 ml-7 mt-1"
+                  />
+                <h1
+                  class="text-white font-customFont text-lg"
+                >
+                  Sign out
+                </h1>
               </span>
+            </li>
           </ul>
         </div>
       </div>
