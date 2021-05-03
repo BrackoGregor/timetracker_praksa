@@ -67,10 +67,16 @@
           />
         </div>
 
+        <h1
+          class="pl-6 mx-12 mt-4 font-light font-customFont text-xl text-red text-center"
+        >
+          {{ errors }}
+        </h1>
+
         <div class="flex flex-col">
           <button
             type="submit"
-            class="mx-12 mt-16 mb-7 text-white font-customFont text-2xl font-medium bg-red rounded-full py-2 hover:bg-opacity-80"
+            class="mx-12 mt-10 mb-7 text-white font-customFont text-2xl font-medium bg-red rounded-full py-2 hover:bg-opacity-80"
           >
             Sign up
           </button>
@@ -94,11 +100,12 @@
 
 <script>
 import { mapActions } from "vuex";
-import router from "../router"; 
+import router from "../router";
 
 export default {
   data() {
     return {
+      errors: "",
       form: {
         firstname: "",
         lastname: "",
@@ -115,14 +122,24 @@ export default {
     }),
 
     submit() {
-      console.log(this.form);
-      this.register(this.form).then(function (response) {
-        console.log(response);
-        router.push("/login");
-      }, function (error) {
-        console.log(error.response.data.errors);
-      });
-      
+      this.register(this.form).then(
+        (response) => {
+          console.log(response);
+          router.replace({
+            name: "Login",
+          });
+        },
+        (error) => {
+          //this.errors = error.response.data.errors
+          var str = JSON.stringify(error.response.data.errors);
+          var mySubString = str.substring(
+            str.lastIndexOf("[") + 1,
+            str.lastIndexOf("]")
+          );
+          mySubString = mySubString.replace(/^"(.*)"$/, '$1')
+          this.errors = mySubString.toString();
+        }
+      );
     },
   },
 };

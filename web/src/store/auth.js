@@ -37,8 +37,8 @@ export default {
     },
 
     async register(_, register_data) {
-      let response = await axios.post("/api/v1/users", register_data)
-      console.log(response.data)
+      await axios.post("/api/v1/users", register_data)
+    
     },
 
 

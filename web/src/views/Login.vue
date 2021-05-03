@@ -32,6 +32,9 @@
             placeholder="Password"
           />
         </div>
+        
+        <h1 class="pl-6 mx-12 mt-5 font-light font-customFont text-xl text-center text-red">{{text}}</h1>
+
         <div class="flex flex-row ml-12 mr-12 justify-between">
           <label class="flex items-center mt-8">
             <input type="checkbox" class="h-5 w-5 text-gray-600" checked /><span
@@ -80,6 +83,7 @@ import router from "../router";
 export default {
   data() {
     return {
+      text: "",
       form: {
         grant_type: "password",
         username: "",
@@ -102,7 +106,7 @@ export default {
           name:'Add'
         })
       }).catch(()=>{
-        console.log("Prijava neuspešna!")
+        this.text = "The email address or password is incorrect!"
       })
     },
   },
