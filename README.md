@@ -7,10 +7,6 @@
 - Patrick Kačič    (frontend)
 - Tomas Kovačič    (frontend)
 
-### Mentors:
-- David Šket
-- Tanis Kodrun
-
 #### Installation
 1. Clone repository timetracker_praksa (https://github.com/BrackoGregor/timetracker_praksa.git)
 2. Create a new database called with any name (e.g. timetracker)
